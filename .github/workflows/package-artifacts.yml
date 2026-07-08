@@ -1,0 +1,56 @@
+name: Package Artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to package
+        required: true
+        default: main
+
+jobs:
+  package:
+    name: Package / ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-x64-gnu
+            os: ubuntu-latest
+            packages: >-
+              @sebastian-software/pdfium-node
+              @sebastian-software/pdfium-node-linux-x64-gnu
+          - name: darwin-arm64
+            os: macos-latest
+            packages: >-
+              @sebastian-software/pdfium-node-darwin-arm64
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build native package
+        run: npm run build:native
+      - name: Verify package contents
+        run: npm run pack:check
+      - name: Pack npm tarballs
+        shell: bash
+        run: |
+          mkdir -p .tmp/package-artifacts
+          for package_name in ${{ matrix.packages }}; do
+            npm pack --workspace "$package_name" --pack-destination .tmp/package-artifacts
+          done
+      - name: Upload tarballs
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-tarballs-${{ matrix.name }}
+          path: .tmp/package-artifacts/*.tgz
+          if-no-files-found: error

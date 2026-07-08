@@ -41,6 +41,16 @@ The QA gate includes:
 - Release Please configuration checks;
 - packed npm artifact validation.
 
+## Package Artifact Validation
+
+Before publishing a preview or stable release, build the exact npm tarballs from the release branch on the supported operating systems:
+
+```sh
+gh workflow run package-artifacts.yml --ref main -f ref=release-please--branches--main
+```
+
+Download and inspect the uploaded `npm-tarballs-*` artifacts before merging the release pull request if the release changes packaging, native linking, or bundled binary contents.
+
 ## Trusted Publishing Setup
 
 npm Trusted Publishing must be configured in npm for every published package before the first real release. The GitHub Actions workflow requests `id-token: write` and publishes with `--provenance`.
