@@ -8,11 +8,14 @@ on:
 
 jobs:
   qa:
-    name: QA / Node ${{ matrix.node-version }}
-    runs-on: ubuntu-latest
+    name: QA / ${{ matrix.os }} / Node ${{ matrix.node-version }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
         node-version:
           - "22.x"
           - "24.x"

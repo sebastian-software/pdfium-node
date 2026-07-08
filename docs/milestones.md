@@ -129,7 +129,7 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [x] Test platform package resolution.
 - [x] Test typed error codes and safe metadata.
 - [x] Add Linux x64 glibc CI coverage.
-- [ ] Add macOS arm64 CI coverage.
+- [x] Add macOS arm64 CI coverage.
 - [x] Add supported Node.js active LTS versions to CI.
 - [x] Add packed-tarball smoke tests to CI.
 

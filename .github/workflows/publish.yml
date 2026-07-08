@@ -11,7 +11,18 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    name: Publish ${{ matrix.package }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - package: "@sebastian-software/pdfium-node"
+            os: ubuntu-latest
+          - package: "@sebastian-software/pdfium-node-linux-x64-gnu"
+            os: ubuntu-latest
+          - package: "@sebastian-software/pdfium-node-darwin-arm64"
+            os: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,9 +36,5 @@ jobs:
         run: npm ci
       - name: Verify packages
         run: npm run qa
-      - name: Publish wrapper package
-        run: npm publish --workspace @sebastian-software/pdfium-node --provenance --access public
-      - name: Publish darwin arm64 package
-        run: npm publish --workspace @sebastian-software/pdfium-node-darwin-arm64 --provenance --access public
-      - name: Publish linux x64 glibc package
-        run: npm publish --workspace @sebastian-software/pdfium-node-linux-x64-gnu --provenance --access public
+      - name: Publish package
+        run: npm publish --workspace "${{ matrix.package }}" --provenance --access public
