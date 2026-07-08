@@ -1,0 +1,68 @@
+name: Published Install
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: npm package version to verify
+        required: true
+        default: 0.1.0
+
+jobs:
+  verify:
+    name: Verify / ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-x64-gnu
+            os: ubuntu-latest
+          - name: darwin-arm64
+            os: macos-latest
+    steps:
+      - name: Checkout fixtures
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: https://registry.npmjs.org
+      - name: Install published package
+        shell: bash
+        run: |
+          mkdir -p .tmp/published-install
+          cd .tmp/published-install
+          npm init -y
+          npm install "pdfium-node@${{ inputs.version }}"
+      - name: Render fixture
+        shell: bash
+        run: |
+          cd .tmp/published-install
+          node --input-type=module --eval '
+            import { readFile } from "node:fs/promises";
+            import { ErrorCodes, PdfiumNodeError, renderPdfThumbnails } from "pdfium-node";
+
+            const pdf = await readFile("../../fixtures/simple-one-page.pdf");
+            const [thumbnail] = await renderPdfThumbnails(pdf, {
+              pages: [1],
+              format: "png",
+              maxWidth: 120,
+              timeoutMs: 5000,
+              maxPixels: 1_000_000,
+            });
+
+            if (thumbnail.page !== 1) throw new Error("Unexpected page");
+            if (thumbnail.width !== 120) throw new Error("Unexpected width");
+            if (thumbnail.height !== 120) throw new Error("Unexpected height");
+            if (thumbnail.mimeType !== "image/png") throw new Error("Unexpected MIME type");
+            if (thumbnail.data[0] !== 137 || thumbnail.data[1] !== 80) throw new Error("Unexpected PNG signature");
+
+            try {
+              await renderPdfThumbnails(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { pages: [1] });
+              throw new Error("Expected malformed PDF to fail");
+            } catch (error) {
+              if (!(error instanceof PdfiumNodeError)) throw error;
+              if (error.code !== ErrorCodes.MalformedPdf) throw error;
+            }
+          '

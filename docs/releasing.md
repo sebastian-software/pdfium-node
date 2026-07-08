@@ -53,6 +53,16 @@ gh workflow run package-artifacts.yml --ref main -f ref=release-please--branches
 
 Download and inspect the uploaded `npm-tarballs-*` artifacts before merging the release pull request if the release changes packaging, native linking, or bundled binary contents.
 
+## Published Install Validation
+
+After publishing, verify the package from the npm registry on every supported platform:
+
+```sh
+gh workflow run published-install.yml --ref main -f version=0.1.0
+```
+
+The workflow installs `pdfium-node` in a fresh project on Linux x64 glibc and macOS arm64, renders a checked-in fixture, and verifies typed malformed-PDF errors from the published package.
+
 ## Trusted Publishing Setup
 
 npm Trusted Publishing must be configured in npm for every published package before the first real release. The GitHub Actions workflow requests `id-token: write` and publishes with `--provenance`.
