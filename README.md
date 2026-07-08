@@ -45,6 +45,34 @@ const thumbnails = await renderPdfThumbnails(pdfBytes, {
 
 The macOS arm64 and Linux x64 glibc implementations currently support PNG output when built on their target platforms. JPEG output still fails with a typed PDFium error until the encoder is implemented.
 
+## Current Quick Start
+
+```ts
+import { readFile } from "node:fs/promises";
+import { renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+
+const pdf = await readFile("document.pdf");
+const [thumbnail] = await renderPdfThumbnails(pdf, {
+  pages: [1],
+  format: "png",
+  maxWidth: 1000,
+  timeoutMs: 5000,
+  maxPixels: 4_000_000,
+});
+
+console.log(thumbnail.page, thumbnail.width, thumbnail.height, thumbnail.mimeType);
+```
+
+## Known Limitations
+
+- JPEG output is part of the planned API but is not implemented yet. Requests with `format: "jpeg"` currently fail with a typed PDFium error.
+- The `quality` option is reserved for JPEG output and has no effect on PNG output.
+- Only a white background is currently supported. Transparent PNG output is intentionally deferred.
+- Password-protected and encrypted PDFs are rejected in the MVP.
+- The package does not expose document metadata, page count, text extraction, raw PDFium handles, or a general PDFium API.
+- Rendering uses one worker process per render request. Worker pools and OS-level sandboxing are deferred.
+- Initial platform packages target Linux x64 glibc and macOS arm64 only. Linux musl, Linux arm64, macOS x64, and Windows are deferred.
+
 ## Platform Policy
 
 Initial targets:
@@ -69,6 +97,7 @@ The minimum supported Node.js version is 22. The project targets active Node.js 
 - [Native build](./docs/native-build.md)
 - [Native measurements](./docs/native-measurements.md)
 - [Releasing](./docs/releasing.md)
+- [Follow-up work](./docs/follow-up-work.md)
 - [Contributing](./CONTRIBUTING.md)
 - [Security](./SECURITY.md)
 
