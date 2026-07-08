@@ -76,3 +76,16 @@ The native packages must be created from builds that include their platform preb
 Every native package must include `THIRD_PARTY_NOTICES.md`. Once PDFium binaries are bundled, the notice files must include the required PDFium and third-party notices before publishing.
 
 The upstream PDFium license is tracked at `third_party/pdfium/LICENSE`. Binary releases must also record the exact PDFium revision and build source.
+
+## PDFium Updates
+
+Maintainers in `sebastian-software/pdfium-node` own PDFium revision updates and security-response releases.
+
+When changing the bundled PDFium revision:
+
+1. Update `scripts/build-native.mjs` to the new pinned source.
+2. Rebuild and measure the native package on supported platforms.
+3. Update `third_party/pdfium/README.md` and `docs/native-measurements.md`.
+4. Verify `npm run qa` and the Package Artifacts workflow.
+5. Inspect native package tarballs for `PDFIUM_VERSION`, `libpdfium`, `pdfium_node_native.node`, `THIRD_PARTY_NOTICES.md`, and the copied license directory.
+6. Include the PDFium revision change in the release notes.
