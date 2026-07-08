@@ -85,7 +85,7 @@ Exit criteria: malformed, slow, or crashing render work does not crash or block 
 - [x] Run render jobs outside the caller process.
 - [x] Enforce `timeoutMs` by terminating the worker process.
 - [x] Return `PDFIUM_NODE_RENDER_TIMEOUT` for timeouts.
-- [ ] Return `PDFIUM_NODE_WORKER_CRASHED` for worker exits.
+- [x] Return `PDFIUM_NODE_WORKER_CRASHED` for worker exits.
 - [ ] Ensure no orphan worker processes remain after timeout or crash.
 - [x] Ensure worker stdout and stderr do not leak into API responses.
 - [ ] Verify invalid PDFs do not crash the caller process.
@@ -126,7 +126,7 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [ ] Test PNG output.
 - [x] Test timeout behavior.
 - [ ] Test repeated render calls for process or memory leaks.
-- [ ] Test platform package resolution.
+- [x] Test platform package resolution.
 - [x] Test typed error codes and safe metadata.
 - [x] Add Linux x64 glibc CI coverage.
 - [ ] Add macOS arm64 CI coverage.

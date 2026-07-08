@@ -4,9 +4,9 @@ import { ErrorCodes, PdfiumNodeError } from "./errors.js";
 
 const workerPath = fileURLToPath(new URL("./worker-child.js", import.meta.url));
 
-export function renderInWorker(pdf, options) {
+export function renderInWorker(pdf, options, workerOptions = {}) {
   return new Promise((resolve, reject) => {
-    const child = fork(workerPath, {
+    const child = fork(workerOptions.workerPath ?? workerPath, {
       execArgv: getWorkerExecArgv(),
       serialization: "advanced",
       stdio: ["ignore", "ignore", "ignore", "ipc"],

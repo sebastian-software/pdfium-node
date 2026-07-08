@@ -6,6 +6,7 @@ import {
   renderPdfThumbnails,
 } from "@sebastian-software/pdfium-node";
 import { getPlatformPackageName } from "../packages/pdfium-node/src/platform.js";
+import { renderInWorker } from "../packages/pdfium-node/src/worker.js";
 
 const pdfBytes = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
 
@@ -71,6 +72,20 @@ describe("renderPdfThumbnails", () => {
       (error) =>
         error instanceof PdfiumNodeError &&
         error.code === ErrorCodes.RenderTimeout
+    );
+  });
+
+  it("returns a typed error when the worker exits early", async () => {
+    await assert.rejects(
+      () =>
+        renderInWorker(
+          pdfBytes,
+          { pages: [1], timeoutMs: 5000 },
+          { workerPath: new URL("../fixtures/crash-worker.js", import.meta.url) }
+        ),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.WorkerCrashed
     );
   });
 });
