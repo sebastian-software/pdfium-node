@@ -42,6 +42,14 @@ npm run qa
 
 The QA gate builds the native skeleton, loads it through the platform package, runs API tests through the worker process, validates packed package contents, and installs the packed tarballs in a clean temporary project.
 
+## Measurements
+
+```sh
+npm run measure:native
+```
+
+The latest checked-in measurement is recorded in `docs/native-measurements.md`.
+
 ## Next Step
 
-The next native milestone is adding JPEG encoding and implementing the Linux x64 glibc native build.
+The next native milestone is adding JPEG encoding.

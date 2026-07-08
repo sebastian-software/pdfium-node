@@ -67,6 +67,7 @@ The minimum supported Node.js version is 22. The project targets active Node.js 
 - [Milestone plan](./docs/milestones.md)
 - [Architecture Decision Records](./docs/adr/README.md)
 - [Native build](./docs/native-build.md)
+- [Native measurements](./docs/native-measurements.md)
 - [Releasing](./docs/releasing.md)
 - [Contributing](./CONTRIBUTING.md)
 - [Security](./SECURITY.md)

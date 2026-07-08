@@ -11,6 +11,7 @@
   "scripts": {
     "qa": "npm run build:native && npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:docs && npm run check:packages && npm run check:release && npm run pack:check && npm run install:check",
     "build:native": "node scripts/build-native.mjs",
+    "measure:native": "node scripts/measure-native.mjs",
     "lint": "node scripts/lint-text.mjs",
     "format:check": "node scripts/lint-text.mjs",
     "typecheck": "node scripts/check-typescript-config.mjs",

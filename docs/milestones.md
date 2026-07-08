@@ -49,9 +49,9 @@ Exit criteria: one fixture page renders to image bytes on macOS arm64 and Linux 
 - [x] Render one page from PDF bytes to an in-memory bitmap.
 - [ ] Encode JPEG output.
 - [x] Return width, height, MIME type, page number, and image bytes to JavaScript.
-- [ ] Measure binary size.
-- [ ] Measure cold-start render time.
-- [ ] Document PDFium revision and build source.
+- [x] Measure binary size.
+- [x] Measure cold-start render time.
+- [x] Document PDFium revision and build source.
 
 ## Milestone 3: Public API MVP
 
