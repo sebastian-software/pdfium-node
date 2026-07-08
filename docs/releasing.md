@@ -13,7 +13,7 @@ Releases are managed with Release Please and npm Trusted Publishing.
 
 ## Preview Release
 
-The first public preview release is forced to `0.1.0` through `release-as` in `release-please-config.json`. Remove that override after the preview release pull request is merged, otherwise later release pull requests will continue to target the same version.
+The first public preview release was published as `0.1.0`. The temporary `release-as` override has been removed from `release-please-config.json` so future release pull requests are derived from Conventional Commits.
 
 Release Please uses the `node-workspace` plugin so local workspace dependency versions stay aligned across the wrapper and native platform packages.
 
@@ -58,7 +58,7 @@ Download and inspect the uploaded `npm-tarballs-*` artifacts before merging the 
 After publishing, verify the package from the npm registry on every supported platform:
 
 ```sh
-gh workflow run published-install.yml --ref main -f version=0.1.0
+gh workflow run published-install.yml --ref main -f version=<version>
 ```
 
 The workflow installs `pdfium-node` in a fresh project on Linux x64 glibc and macOS arm64, renders a checked-in fixture, and verifies typed malformed-PDF errors from the published package.

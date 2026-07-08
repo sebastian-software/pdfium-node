@@ -173,12 +173,12 @@ Goal: publish a pre-1.0 package that proves the full operational path.
 Exit criteria: a real user can install the package from npm and render a fixture on supported platforms.
 
 - [x] Complete all Milestone 0-8 required items.
-- [ ] Publish first pre-1.0 release ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
-- [ ] Verify npm install on Linux x64 glibc ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
-- [ ] Verify npm install on macOS arm64 ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
-- [ ] Verify README quick start works from the published package ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [x] Publish first pre-1.0 release: `pdfium-node@0.1.0`, `pdfium-node-darwin-arm64@0.1.0`, and `pdfium-node-linux-x64-gnu@0.1.0` ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [x] Verify npm install on Linux x64 glibc with Published Install run `28976386024` ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [x] Verify npm install on macOS arm64 with Published Install run `28976386024` ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [x] Verify README quick start works from the published package through the Published Install render smoke ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [x] Verify unsupported platform error is actionable.
-- [ ] Verify license and notice files are present in published package tarballs ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [x] Verify license and notice files are present in published package tarballs ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [x] Record known limitations in README.
 - [x] Open follow-up issues for deferred platforms and deferred API decisions.
 
@@ -191,11 +191,11 @@ Exit criteria: the package is safe to recommend for supported backend thumbnail 
 - [x] Resolve all MVP open questions from the RFC.
 - [x] Confirm public API stability.
 - [x] Confirm typed error code stability.
-- [ ] Confirm Linux x64 glibc support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
-- [ ] Confirm macOS arm64 support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Confirm Linux x64 glibc support through CI, package artifact validation, and Published Install run `28976386024` ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Confirm macOS arm64 support through CI, package artifact validation, and Published Install run `28976386024` ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [x] Confirm active Node.js LTS support policy.
 - [x] Confirm PDFium update and security response ownership.
-- [ ] Confirm packed npm artifacts install and render fixtures on all supported platforms ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Confirm packed npm artifacts install and render fixtures on all supported platforms ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [x] Confirm README documents supported platforms, limits, licensing, and non-goals.
 - [ ] Confirm Release Please produces the 1.0 release pull request ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [ ] Publish `1.0.0` through npm Trusted Publishing ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
