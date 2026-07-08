@@ -76,6 +76,29 @@ describe("renderPdfThumbnails", () => {
     );
   });
 
+  it("does not leave timed-out worker processes alive", async () => {
+    let workerPid;
+
+    await assert.rejects(
+      () =>
+        renderInWorker(
+          pdfBytes,
+          { pages: [1], timeoutMs: 20 },
+          {
+            workerPath: new URL("../fixtures/hang-worker.js", import.meta.url),
+            onSpawn: (child) => {
+              workerPid = child.pid;
+            },
+          }
+        ),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.RenderTimeout
+    );
+
+    assert.equal(isProcessRunning(workerPid), false);
+  });
+
   it("returns a typed error when the worker exits early", async () => {
     await assert.rejects(
       () =>
@@ -204,6 +227,21 @@ describe("renderPdfThumbnails", () => {
     }
   });
 });
+
+function isProcessRunning(pid) {
+  assert.equal(typeof pid, "number");
+
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    if (error?.code === "ESRCH") {
+      return false;
+    }
+
+    throw error;
+  }
+}
 
 describe("platform package resolution", () => {
   it("maps macOS arm64", () => {

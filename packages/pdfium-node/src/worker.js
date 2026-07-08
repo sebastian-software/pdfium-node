@@ -12,10 +12,12 @@ export function renderInWorker(pdf, options, workerOptions = {}) {
       stdio: ["ignore", "ignore", "ignore", "ipc"],
     });
 
-    let settled = false;
+    let completed = false;
+    let exitState = null;
 
     const timeout = setTimeout(() => {
-      settle(
+      child.kill("SIGKILL");
+      settleAfterExit(
         reject,
         new PdfiumNodeError(
           ErrorCodes.RenderTimeout,
@@ -23,8 +25,9 @@ export function renderInWorker(pdf, options, workerOptions = {}) {
           { timeoutMs: options.timeoutMs }
         )
       );
-      child.kill("SIGKILL");
     }, options.timeoutMs);
+
+    workerOptions.onSpawn?.(child);
 
     child.on("message", (message) => {
       if (message?.type === "success") {
@@ -47,7 +50,9 @@ export function renderInWorker(pdf, options, workerOptions = {}) {
     });
 
     child.on("exit", (code, signal) => {
-      if (settled) {
+      exitState = { code, signal };
+
+      if (completed) {
         return;
       }
 
@@ -67,16 +72,37 @@ export function renderInWorker(pdf, options, workerOptions = {}) {
     });
 
     function settle(callback, value) {
-      if (settled) {
+      if (completed) {
         return;
       }
 
-      settled = true;
+      completed = true;
       clearTimeout(timeout);
       if (child.connected) {
         child.disconnect();
       }
       callback(value);
+    }
+
+    function settleAfterExit(callback, value) {
+      if (completed) {
+        return;
+      }
+
+      completed = true;
+      clearTimeout(timeout);
+      if (child.connected) {
+        child.disconnect();
+      }
+
+      if (exitState) {
+        callback(value);
+        return;
+      }
+
+      child.once("exit", () => {
+        callback(value);
+      });
     }
   });
 }

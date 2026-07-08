@@ -86,7 +86,7 @@ Exit criteria: malformed, slow, or crashing render work does not crash or block 
 - [x] Enforce `timeoutMs` by terminating the worker process.
 - [x] Return `PDFIUM_NODE_RENDER_TIMEOUT` for timeouts.
 - [x] Return `PDFIUM_NODE_WORKER_CRASHED` for worker exits.
-- [ ] Ensure no orphan worker processes remain after timeout or crash.
+- [x] Ensure no orphan worker processes remain after timeout or crash.
 - [x] Ensure worker stdout and stderr do not leak into API responses.
 - [x] Verify invalid PDFs do not crash the caller process.
 - [x] Decide whether worker processes are one-job-per-process or pooled.
