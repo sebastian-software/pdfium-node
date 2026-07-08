@@ -188,17 +188,17 @@ Goal: declare the public API and platform support stable.
 
 Exit criteria: the package is safe to recommend for supported backend thumbnail rendering use cases.
 
-- [ ] Resolve all MVP open questions from the RFC.
-- [ ] Confirm public API stability.
-- [ ] Confirm typed error code stability.
-- [ ] Confirm Linux x64 glibc support.
-- [ ] Confirm macOS arm64 support.
-- [ ] Confirm active Node.js LTS support policy.
-- [ ] Confirm PDFium update and security response ownership.
-- [ ] Confirm packed npm artifacts install and render fixtures on all supported platforms.
-- [ ] Confirm README documents supported platforms, limits, licensing, and non-goals.
-- [ ] Confirm Release Please produces the 1.0 release pull request.
-- [ ] Publish `1.0.0` through npm Trusted Publishing.
+- [ ] Resolve all MVP open questions from the RFC ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm public API stability ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm typed error code stability ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm Linux x64 glibc support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm macOS arm64 support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm active Node.js LTS support policy ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm PDFium update and security response ownership ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm packed npm artifacts install and render fixtures on all supported platforms ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm README documents supported platforms, limits, licensing, and non-goals ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Confirm Release Please produces the 1.0 release pull request ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [ ] Publish `1.0.0` through npm Trusted Publishing ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 
 ## Deferred Work
 
