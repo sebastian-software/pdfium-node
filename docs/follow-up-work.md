@@ -4,6 +4,8 @@ This document keeps issue-ready follow-up work in the repository until the publi
 
 ## Password-Protected PDFs
 
+GitHub issue: [#1](https://github.com/sebastian-software/pdfium-node/issues/1)
+
 Decide whether password-protected PDFs belong in the stable API.
 
 Acceptance criteria:
@@ -13,6 +15,8 @@ Acceptance criteria:
 - Tests cover missing, wrong, and correct password behavior if support is added.
 
 ## Deferred Platform Packages
+
+GitHub issue: [#3](https://github.com/sebastian-software/pdfium-node/issues/3)
 
 Evaluate additional platform packages after the Linux x64 glibc and macOS arm64 path is stable.
 
@@ -31,6 +35,8 @@ Acceptance criteria:
 
 ## Document Info API
 
+GitHub issue: [#4](https://github.com/sebastian-software/pdfium-node/issues/4)
+
 Evaluate a small `getPdfDocumentInfo` API after thumbnail rendering is stable.
 
 Acceptance criteria:
@@ -40,6 +46,8 @@ Acceptance criteria:
 - Typed errors match the render API.
 
 ## Explicit-Dimension Rendering
+
+GitHub issue: [#5](https://github.com/sebastian-software/pdfium-node/issues/5)
 
 Evaluate selected-page raster rendering at explicit dimensions after thumbnail rendering is stable.
 
@@ -51,6 +59,8 @@ Acceptance criteria:
 
 ## Worker Pool
 
+GitHub issue: [#6](https://github.com/sebastian-software/pdfium-node/issues/6)
+
 Evaluate whether repeated rendering workloads need a bounded worker pool.
 
 Acceptance criteria:
@@ -61,6 +71,8 @@ Acceptance criteria:
 
 ## OS-Level Sandboxing
 
+GitHub issue: [#7](https://github.com/sebastian-software/pdfium-node/issues/7)
+
 Evaluate process-level sandboxing beyond worker isolation.
 
 Acceptance criteria:
@@ -70,6 +82,8 @@ Acceptance criteria:
 - The implementation does not require elevated privileges for normal use.
 
 ## Expanded Corpus Testing
+
+GitHub issue: [#8](https://github.com/sebastian-software/pdfium-node/issues/8)
 
 Add fuzzing or a broader legal PDF corpus after the basic clean-room fixture suite is stable.
 

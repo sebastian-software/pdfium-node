@@ -180,7 +180,7 @@ Exit criteria: a real user can install the package from npm and render a fixture
 - [ ] Verify unsupported platform error is actionable.
 - [ ] Verify license and notice files are present in published package tarballs.
 - [x] Record known limitations in README.
-- [ ] Open follow-up issues for deferred platforms and deferred API decisions.
+- [x] Open follow-up issues for deferred platforms and deferred API decisions.
 
 ## Milestone 10: 1.0 Release
 
