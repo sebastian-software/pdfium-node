@@ -60,13 +60,32 @@ try {
       "--eval",
       `
         import { ErrorCodes, PdfiumNodeError, renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+        import { pathToFileURL } from "node:url";
+
         const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
+
         try {
           await renderPdfThumbnails(pdf, { pages: [1] });
           throw new Error("Expected native placeholder to fail");
         } catch (error) {
           if (!(error instanceof PdfiumNodeError)) throw error;
           if (error.code !== ErrorCodes.MalformedPdf) throw error;
+        }
+
+        const platformModuleUrl = pathToFileURL(
+          "node_modules/@sebastian-software/pdfium-node/src/platform.js"
+        );
+        const { loadNativePackage } = await import(platformModuleUrl);
+
+        try {
+          await loadNativePackage("win32", "x64");
+          throw new Error("Expected unsupported platform to fail");
+        } catch (error) {
+          if (!(error instanceof PdfiumNodeError)) throw error;
+          if (error.code !== ErrorCodes.UnsupportedPlatform) throw error;
+          if (!error.message.includes("win32/x64")) throw error;
+          if (error.metadata?.platform !== "win32") throw error;
+          if (error.metadata?.arch !== "x64") throw error;
         }
       `,
     ],

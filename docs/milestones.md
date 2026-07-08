@@ -177,7 +177,7 @@ Exit criteria: a real user can install the package from npm and render a fixture
 - [ ] Verify npm install on Linux x64 glibc ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [ ] Verify npm install on macOS arm64 ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [ ] Verify README quick start works from the published package ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
-- [ ] Verify unsupported platform error is actionable.
+- [x] Verify unsupported platform error is actionable.
 - [ ] Verify license and notice files are present in published package tarballs ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [x] Record known limitations in README.
 - [x] Open follow-up issues for deferred platforms and deferred API decisions.
