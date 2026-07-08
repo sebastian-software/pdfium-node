@@ -5,7 +5,9 @@ export const root = new URL("../../", import.meta.url).pathname;
 
 const ignoredDirectories = new Set([
   ".git",
+  ".tmp",
   "node_modules",
+  "prebuilds",
   "dist",
   "coverage",
 ]);

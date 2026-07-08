@@ -13,7 +13,9 @@ describe("native skeleton", () => {
       backend: "node-api",
       platform: "darwin",
       arch: "arm64",
-      pdfiumLinked: false,
+      pdfiumLinked: true,
+      pdfiumSource: "bblanchon/pdfium-binaries",
+      pdfiumRevision: "chromium/7934",
     });
   });
 });

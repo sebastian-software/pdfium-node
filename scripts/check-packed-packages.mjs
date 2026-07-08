@@ -32,6 +32,11 @@ const packages = [
     platformRequiredFiles:
       process.platform === "darwin" && process.arch === "arm64"
         ? ["prebuilds/darwin-arm64/pdfium_node_native.node"]
+          .concat([
+            "prebuilds/darwin-arm64/libpdfium.dylib",
+            "prebuilds/darwin-arm64/PDFIUM_VERSION",
+            "prebuilds/darwin-arm64/licenses/pdfium.txt",
+          ])
         : [],
   },
   {

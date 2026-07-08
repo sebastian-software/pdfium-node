@@ -42,6 +42,18 @@ function serializeError(error) {
     };
   }
 
+  if (
+    error instanceof Error &&
+    typeof error.code === "string" &&
+    error.code.startsWith("PDFIUM_NODE_")
+  ) {
+    return {
+      code: error.code,
+      message: error.message,
+      metadata: {},
+    };
+  }
+
   return {
     code: ErrorCodes.PdfiumError,
     message: error instanceof Error ? error.message : "Unknown native render error.",

@@ -4,6 +4,12 @@ Native PDFium access for Node.js on Linux and macOS.
 
 This project is in early implementation. The first production capability is selected-page thumbnail rendering from PDF bytes to JPEG or PNG image bytes. The public API is intentionally task-oriented and does not expose raw PDFium handles.
 
+Current implementation status:
+
+- macOS arm64 can render selected pages to PNG through native PDFium.
+- JPEG encoding is not implemented yet.
+- Linux x64 glibc packaging exists, but native PDFium rendering is still pending.
+
 ## Goals
 
 - Render selected PDF pages on the backend.
@@ -37,7 +43,7 @@ const thumbnails = await renderPdfThumbnails(pdfBytes, {
 });
 ```
 
-The initial implementation will fail with typed errors until native rendering and platform packages are available.
+The macOS arm64 implementation currently supports PNG output. JPEG output still fails with a typed PDFium error until the encoder is implemented.
 
 ## Platform Policy
 

@@ -2,16 +2,17 @@
 
 The current native implementation is a dependency-free Node-API skeleton.
 
-It proves that platform packages can load a native `.node` addon and call through the worker process. It does not link PDFium yet and does not render PDF pages yet.
+It proves that platform packages can load a native `.node` addon, link PDFium, and call through the worker process.
 
 ## Current Status
 
 - Binding approach: direct C Node-API from C++.
 - Local implemented target: `darwin-arm64`.
 - Linux x64 package target: package placeholder, native build still pending.
-- PDFium linked: no.
-- Rendering: not implemented.
+- PDFium linked: yes on `darwin-arm64`.
+- Rendering: PNG output on `darwin-arm64`; JPEG output pending.
 - PDFium license reference: `third_party/pdfium/LICENSE`.
+- PDFium binary source: `bblanchon/pdfium-binaries`, pinned to `chromium/7934`.
 
 ## Build
 
@@ -37,4 +38,4 @@ The QA gate builds the native skeleton, loads it through the platform package, r
 
 ## Next Step
 
-The next native milestone is linking a known PDFium build, recording its exact upstream revision, adding complete third-party notices, and replacing the skeleton error with real page rendering.
+The next native milestone is adding JPEG encoding and implementing the Linux x64 glibc native build.

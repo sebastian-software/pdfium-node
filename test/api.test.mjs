@@ -1,5 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   ErrorCodes,
   PdfiumNodeError,
@@ -9,6 +10,7 @@ import { getPlatformPackageName } from "../packages/pdfium-node/src/platform.js"
 import { renderInWorker } from "../packages/pdfium-node/src/worker.js";
 
 const pdfBytes = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
+const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
 
 describe("renderPdfThumbnails", () => {
   it("rejects missing page requests", async () => {
@@ -86,6 +88,78 @@ describe("renderPdfThumbnails", () => {
         error instanceof PdfiumNodeError &&
         error.code === ErrorCodes.WorkerCrashed
     );
+  });
+
+  it("renders a simple vector PDF page to PNG", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+    const [thumbnail] = await renderPdfThumbnails(fixture, {
+      pages: [1],
+      format: "png",
+      maxWidth: 200,
+    });
+
+    assert.equal(thumbnail.page, 1);
+    assert.equal(thumbnail.width, 200);
+    assert.equal(thumbnail.height, 200);
+    assert.equal(thumbnail.mimeType, "image/png");
+    assert.deepEqual(Array.from(thumbnail.data.slice(0, 8)), pngSignature);
+    assert.ok(thumbnail.data.byteLength > 100);
+  });
+
+  it("preserves requested order and duplicate pages", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+    const thumbnails = await renderPdfThumbnails(fixture, {
+      pages: [1, 1],
+      format: "png",
+      maxWidth: 100,
+    });
+
+    assert.deepEqual(
+      thumbnails.map((thumbnail) => thumbnail.page),
+      [1, 1]
+    );
+    assert.equal(thumbnails.length, 2);
+  });
+
+  it("returns a typed error for malformed PDFs", async () => {
+    await assert.rejects(
+      () => renderPdfThumbnails(pdfBytes, { pages: [1], format: "png" }),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.MalformedPdf
+    );
+  });
+
+  it("enforces maxPixels before returning image bytes", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+
+    await assert.rejects(
+      () =>
+        renderPdfThumbnails(fixture, {
+          pages: [1],
+          format: "png",
+          maxWidth: 200,
+          maxPixels: 100,
+        }),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.PixelLimitExceeded
+    );
+  });
+
+  it("handles repeated render calls", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+
+    for (let index = 0; index < 3; index += 1) {
+      const [thumbnail] = await renderPdfThumbnails(fixture, {
+        pages: [1],
+        format: "png",
+        maxWidth: 80,
+      });
+
+      assert.equal(thumbnail.width, 80);
+      assert.equal(thumbnail.mimeType, "image/png");
+    }
   });
 });
 

@@ -2,4 +2,6 @@
 
 Native PDFium access for Node.js.
 
-The package is currently a JavaScript API skeleton with option validation, typed errors, and platform package resolution. Native rendering is implemented in platform packages in later milestones.
+The package currently provides option validation, typed errors, worker-process isolation, platform package resolution, and PNG rendering on macOS arm64 through native PDFium.
+
+JPEG output and Linux x64 native rendering are still pending.

@@ -45,10 +45,10 @@ Exit criteria: one fixture page renders to image bytes on macOS arm64 and Linux 
 - [x] Select initial native binding implementation: `napi-rs` unless the spike proves `node-addon-api` is materially simpler.
 - [x] Record binding decision or change as an ADR if the RFC direction changes.
 - [x] Add minimal native package skeleton.
-- [ ] Link or bundle a known PDFium build for local development.
-- [ ] Render one page from PDF bytes to an in-memory bitmap.
+- [x] Link or bundle a known PDFium build for local development.
+- [x] Render one page from PDF bytes to an in-memory bitmap.
 - [ ] Encode JPEG output.
-- [ ] Return width, height, MIME type, page number, and image bytes to JavaScript.
+- [x] Return width, height, MIME type, page number, and image bytes to JavaScript.
 - [ ] Measure binary size.
 - [ ] Measure cold-start render time.
 - [ ] Document PDFium revision and build source.
@@ -62,13 +62,13 @@ Exit criteria: callers can render selected pages with validated options and stab
 - [x] Implement `renderPdfThumbnails(pdf, options)`.
 - [x] Validate required `pages` input.
 - [x] Use 1-based page numbers in the public API.
-- [ ] Preserve requested page order in results.
-- [ ] Decide and implement duplicate page behavior.
+- [x] Preserve requested page order in results.
+- [x] Decide and implement duplicate page behavior.
 - [x] Implement `maxWidth`.
 - [x] Implement `maxPixels`.
 - [x] Implement `maxInputBytes`.
 - [ ] Implement JPEG output with `quality`.
-- [ ] Implement PNG output.
+- [x] Implement PNG output.
 - [x] Implement `background` behavior.
 - [x] Decide whether to include `getPdfDocumentInfo` in the MVP.
 - [x] Normalize typed errors with stable `code` values.
@@ -88,7 +88,7 @@ Exit criteria: malformed, slow, or crashing render work does not crash or block 
 - [x] Return `PDFIUM_NODE_WORKER_CRASHED` for worker exits.
 - [ ] Ensure no orphan worker processes remain after timeout or crash.
 - [x] Ensure worker stdout and stderr do not leak into API responses.
-- [ ] Verify invalid PDFs do not crash the caller process.
+- [x] Verify invalid PDFs do not crash the caller process.
 - [x] Decide whether worker processes are one-job-per-process or pooled.
 - [x] Record worker lifecycle decision as an ADR if it changes the accepted isolation model.
 
@@ -116,16 +116,16 @@ Goal: prove behavior against realistic and legally redistributable PDFs.
 
 Exit criteria: the CI matrix catches rendering, packaging, and error-regression issues.
 
-- [ ] Test simple one-page vector PDF rendering.
+- [x] Test simple one-page vector PDF rendering.
 - [ ] Test multi-page PDF rendering.
 - [ ] Test image-heavy PDF rendering.
-- [ ] Test malformed PDF handling.
+- [x] Test malformed PDF handling.
 - [ ] Test encrypted PDF handling.
-- [ ] Test oversized page or pixel-limit rejection.
+- [x] Test oversized page or pixel-limit rejection.
 - [ ] Test JPEG output.
-- [ ] Test PNG output.
+- [x] Test PNG output.
 - [x] Test timeout behavior.
-- [ ] Test repeated render calls for process or memory leaks.
+- [x] Test repeated render calls for process or memory leaks.
 - [x] Test platform package resolution.
 - [x] Test typed error codes and safe metadata.
 - [x] Add Linux x64 glibc CI coverage.
@@ -140,13 +140,13 @@ Goal: make redistribution and binary provenance explicit.
 Exit criteria: every package that ships binaries includes the required notices and release metadata.
 
 - [x] Include PDFium license text.
-- [ ] Include required third-party notices for the bundled PDFium build.
+- [x] Include required third-party notices for the bundled PDFium build.
 - [x] Add publish-time check for license and notice files.
 - [x] Document that MIT applies only to project-owned wrapper code.
 - [x] Document bundled PDFium binary licensing in README.
-- [ ] Track exact PDFium revision in release metadata.
-- [ ] Document whether PDFium binaries are built by this project or imported from a trusted upstream build source.
-- [ ] Keep binary build scripts reproducible enough for maintainers to rebuild artifacts.
+- [x] Track exact PDFium revision in release metadata.
+- [x] Document whether PDFium binaries are built by this project or imported from a trusted upstream build source.
+- [x] Keep binary build scripts reproducible enough for maintainers to rebuild artifacts.
 - [x] Add dependency and artifact provenance notes to release documentation.
 
 ## Milestone 8: Release Automation
