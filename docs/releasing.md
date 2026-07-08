@@ -19,7 +19,7 @@ Release Please uses the `node-workspace` plugin so local workspace dependency ve
 
 ## Stable Release
 
-The first stable release is temporarily forced to `1.0.0` through `release-as` in `release-please-config.json`. Remove that override after the stable release pull request is merged, otherwise later release pull requests will continue to target the same version.
+The first stable release was published as `1.0.0`. The temporary `release-as` override has been removed from `release-please-config.json` so future release pull requests are derived from Conventional Commits.
 
 ## Packages
 
@@ -81,7 +81,7 @@ npm trust github pdfium-node-darwin-arm64 --repo sebastian-software/pdfium-node 
 npm trust github pdfium-node-linux-x64-gnu --repo sebastian-software/pdfium-node --file publish.yml --yes
 ```
 
-For brand-new package names, npm currently requires the package record to exist before trust can be configured. `pdfium-node` already has a `0.0.0` placeholder package. Bootstrap the native platform package records from exact `0.0.0` tarballs produced by the Package Artifacts workflow, then configure trust and use the GitHub Actions publish workflow for subsequent releases.
+For brand-new package names, npm currently requires the package record to exist before trust can be configured. The package records for `pdfium-node`, `pdfium-node-darwin-arm64`, and `pdfium-node-linux-x64-gnu` already exist. Use the GitHub Actions publish workflow for subsequent releases.
 
 The native packages must be created from builds that include their platform prebuilds. Do not bootstrap a platform package from the wrong operating system just to create the npm package name.
 

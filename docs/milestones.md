@@ -197,8 +197,8 @@ Exit criteria: the package is safe to recommend for supported backend thumbnail 
 - [x] Confirm PDFium update and security response ownership.
 - [x] Confirm packed npm artifacts install and render fixtures on all supported platforms ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [x] Confirm README documents supported platforms, limits, licensing, and non-goals.
-- [ ] Confirm Release Please produces the 1.0 release pull request ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
-- [ ] Publish `1.0.0` through npm Trusted Publishing ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Confirm Release Please produces the 1.0 release pull request: PR #11 ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Publish `1.0.0` through npm Trusted Publishing with Publish run `28977375063` and Published Install run `28977441046` ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 
 ## Deferred Work
 
