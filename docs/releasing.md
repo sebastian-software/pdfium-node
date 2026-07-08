@@ -17,6 +17,10 @@ The first public preview release was published as `0.1.0`. The temporary `releas
 
 Release Please uses the `node-workspace` plugin so local workspace dependency versions stay aligned across the wrapper and native platform packages.
 
+## Stable Release
+
+The first stable release is temporarily forced to `1.0.0` through `release-as` in `release-please-config.json`. Remove that override after the stable release pull request is merged, otherwise later release pull requests will continue to target the same version.
+
 ## Packages
 
 The release configuration covers:
