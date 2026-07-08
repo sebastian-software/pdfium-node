@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-linux-x64-gnu-v0.1.0...pdfium-node-linux-x64-gnu-v1.0.0) (2026-07-08)
+
+
+### Features
+
+* declare stable package support ([9223d60](https://github.com/sebastian-software/pdfium-node/commit/9223d60aeb4a87f179a84061d7b4c0c29695bedc))
+
 ## 0.1.0 (2026-07-08)
 
 

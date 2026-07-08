@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-v0.1.0...pdfium-node-v1.0.0) (2026-07-08)
+
+
+### Features
+
+* declare stable package support ([9223d60](https://github.com/sebastian-software/pdfium-node/commit/9223d60aeb4a87f179a84061d7b4c0c29695bedc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * optionalDependencies
+    * pdfium-node-darwin-arm64 bumped from 0.1.0 to 1.0.0
+    * pdfium-node-linux-x64-gnu bumped from 0.1.0 to 1.0.0
+
 ## 0.1.0 (2026-07-08)
 
 
