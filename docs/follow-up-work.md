@@ -14,24 +14,29 @@ Acceptance criteria:
 - Passwords are never logged or included in error metadata.
 - Tests cover missing, wrong, and correct password behavior if support is added.
 
-## Deferred Platform Packages
+## Linux Server and Edge Platform Packages
 
 GitHub issue: [#3](https://github.com/sebastian-software/pdfium-node/issues/3)
 
-Evaluate additional platform packages after the Linux x64 glibc and macOS arm64 path is stable.
+Add Linux platform packages that matter for server and edge deployments after the Linux x64 glibc and macOS arm64 path is stable.
 
-Candidate targets:
+Planned targets:
 
-- Linux arm64.
-- macOS x64.
-- Linux musl.
-- Windows.
+- Linux arm64 glibc.
+- Linux x64 musl.
+- Linux arm64 musl if the PDFium binary source, linking model, and CI path are practical.
+
+Out of scope:
+
+- macOS x64 unless a concrete user or maintainer need appears.
+- Windows until there is concrete demand and dedicated CI, packaging, and binary validation.
 
 Acceptance criteria:
 
 - Each platform has an explicit PDFium binary source or build procedure.
 - CI verifies install and rendering on the target.
 - README and package metadata document the support level.
+- npm Trusted Publishing is configured for every new platform package.
 
 ## Document Info API
 

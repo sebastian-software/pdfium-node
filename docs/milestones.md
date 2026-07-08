@@ -16,7 +16,7 @@ Exit criteria: contributors can understand the project direction, decision proce
 - [x] Add ADR index linking all accepted ADRs.
 - [x] Decide final npm package name: `pdfium-node`.
 - [x] Decide minimum supported Node.js version.
-- [x] Decide whether Linux arm64 and macOS x64 are initial or follow-up targets.
+- [x] Decide first follow-up platform priorities.
 - [x] Decide first-release behavior for encrypted PDFs and password support.
 - [x] Decide whether PNG transparency is preserved or all output is flattened.
 
@@ -204,9 +204,9 @@ Exit criteria: the package is safe to recommend for supported backend thumbnail 
 
 These items are intentionally outside the first stable release unless a real user need changes the priority.
 
-- [ ] Linux arm64 platform package.
-- [ ] macOS x64 platform package.
-- [ ] Musl Linux platform package.
+- [ ] Linux arm64 glibc platform package.
+- [ ] Linux x64 musl platform package.
+- [ ] Linux arm64 musl platform package if the binary, linking, and CI path is practical.
 - [ ] Windows support.
 - [ ] `getPdfDocumentInfo`.
 - [ ] Basic metadata API.

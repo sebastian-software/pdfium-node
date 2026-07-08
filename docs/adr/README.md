@@ -16,3 +16,4 @@ Accepted ADRs are immutable. If a decision changes, create a new ADR that supers
 - [0010. Set the MVP package and support baseline](./0010-set-the-mvp-package-and-support-baseline.md)
 - [0011. Use direct Node-API for the native skeleton](./0011-use-direct-node-api-for-the-native-skeleton.md)
 - [0012. Use unscoped npm package names](./0012-use-unscoped-npm-package-names.md)
+- [0013. Prioritize Linux server and edge platforms](./0013-prioritize-linux-server-and-edge-platforms.md)

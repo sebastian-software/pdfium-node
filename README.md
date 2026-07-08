@@ -69,7 +69,7 @@ console.log(thumbnail.page, thumbnail.width, thumbnail.height, thumbnail.mimeTyp
 - Password-protected and encrypted PDFs are rejected in the MVP.
 - The package does not expose document metadata, page count, text extraction, raw PDFium handles, or a general PDFium API.
 - Rendering uses one worker process per render request. Worker pools and OS-level sandboxing are deferred.
-- Initial platform packages target Linux x64 glibc and macOS arm64 only. Linux musl, Linux arm64, macOS x64, and Windows are deferred.
+- Stable platform packages target Linux x64 glibc and macOS arm64. Linux arm64 and Linux musl are planned server and edge follow-up targets. macOS x64 and Windows are not planned without concrete demand.
 
 ## Platform Policy
 
@@ -81,9 +81,10 @@ Stable targets:
 Deferred targets:
 
 - Linux arm64
-- macOS x64
 - Linux musl
 - Windows
+
+Linux arm64 and musl are planned follow-up targets for server and edge deployments. macOS x64 is not planned unless a concrete user or maintainer need appears.
 
 The minimum supported Node.js version is 22. The project targets active Node.js LTS release lines.
 

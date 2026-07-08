@@ -260,16 +260,19 @@ Example package layout:
 pdfium-node
 pdfium-node-linux-x64-gnu
 pdfium-node-linux-arm64-gnu
+pdfium-node-linux-x64-musl
+pdfium-node-linux-arm64-musl
 pdfium-node-darwin-arm64
-pdfium-node-darwin-x64
 ```
 
 Initial platform support:
 
 1. Linux x64 glibc
 2. macOS arm64
-3. Linux arm64 if needed
-4. macOS x64 only if there is a concrete user need
+3. Linux arm64 glibc as a planned server follow-up
+4. Linux musl as planned edge/container follow-up targets
+
+macOS x64 is not planned unless a concrete user or maintainer need appears.
 
 Windows should not be promised until CI, packaging, and binary validation are in place.
 
