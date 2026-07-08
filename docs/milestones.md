@@ -173,12 +173,12 @@ Goal: publish a pre-1.0 package that proves the full operational path.
 Exit criteria: a real user can install the package from npm and render a fixture on supported platforms.
 
 - [x] Complete all Milestone 0-8 required items.
-- [ ] Publish first pre-1.0 release.
-- [ ] Verify npm install on Linux x64 glibc.
-- [ ] Verify npm install on macOS arm64.
-- [ ] Verify README quick start works from the published package.
+- [ ] Publish first pre-1.0 release ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [ ] Verify npm install on Linux x64 glibc ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [ ] Verify npm install on macOS arm64 ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
+- [ ] Verify README quick start works from the published package ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [ ] Verify unsupported platform error is actionable.
-- [ ] Verify license and notice files are present in published package tarballs.
+- [ ] Verify license and notice files are present in published package tarballs ([#9](https://github.com/sebastian-software/pdfium-node/issues/9)).
 - [x] Record known limitations in README.
 - [x] Open follow-up issues for deferred platforms and deferred API decisions.
 
