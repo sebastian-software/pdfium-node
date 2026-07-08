@@ -1,8 +1,8 @@
 # PDFium
 
-This directory records PDFium licensing and future binary provenance.
+This directory records PDFium licensing and binary provenance.
 
-The project does not bundle PDFium yet. The native addon skeleton currently reports `pdfiumLinked: false`.
+Supported platform builds import prebuilt PDFium archives from `bblanchon/pdfium-binaries` and bundle the matching shared library, `PDFIUM_VERSION`, and license directory into the generated native npm package artifacts. Generated `prebuilds/` directories are not committed to git.
 
 ## License Source
 
@@ -11,6 +11,8 @@ The project does not bundle PDFium yet. The native addon skeleton currently repo
 
 ## Revision Tracking
 
-No PDFium revision is linked yet.
+- Current build source: `bblanchon/pdfium-binaries`
+- Current pinned release: `chromium/7934`
+- Current PDFium version: `152.0.7934.0`
 
-When PDFium is bundled, add the exact upstream revision, build source, build flags, and third-party notices before publishing any native binary package.
+When the PDFium revision changes, update this file, `docs/native-build.md`, checked-in measurement notes, and the release notes.
