@@ -59,13 +59,15 @@ npm Trusted Publishing must be configured in npm for every published package bef
 
 Do not add long-lived npm tokens to repository secrets.
 
-Trusted publisher setup can be managed with the npm CLI once the packages exist on the registry:
+Trusted publisher setup can be managed with the npm CLI once the packages exist on the registry. The npm CLI requires an npm owner account with two-factor authentication for this operation:
 
 ```sh
-npm trust github @sebastian-software/pdfium-node --repo sebastian-software/pdfium-node --file publish.yml
-npm trust github @sebastian-software/pdfium-node-darwin-arm64 --repo sebastian-software/pdfium-node --file publish.yml
-npm trust github @sebastian-software/pdfium-node-linux-x64-gnu --repo sebastian-software/pdfium-node --file publish.yml
+npm trust github @sebastian-software/pdfium-node --repo sebastian-software/pdfium-node --file publish.yml --yes
+npm trust github @sebastian-software/pdfium-node-darwin-arm64 --repo sebastian-software/pdfium-node --file publish.yml --yes
+npm trust github @sebastian-software/pdfium-node-linux-x64-gnu --repo sebastian-software/pdfium-node --file publish.yml --yes
 ```
+
+For brand-new package names, npm currently requires the package record to exist before trust can be configured. Bootstrap those package records from the exact tarballs produced by the Package Artifacts workflow, then configure trust and use the GitHub Actions publish workflow for subsequent releases.
 
 The native packages must be created from builds that include their platform prebuilds. Do not bootstrap a platform package from the wrong operating system just to create the npm package name.
 
