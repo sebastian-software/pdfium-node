@@ -16,7 +16,7 @@ Current implementation status:
 - Avoid PDF.js and WebAssembly.
 - Keep rendering isolated from the caller process.
 - Ship prebuilt packages for supported platforms.
-- Publish under the `@sebastian-software/pdfium-node` package name.
+- Publish under the `pdfium-node` package name.
 
 ## Non-Goals
 
@@ -30,7 +30,7 @@ Current implementation status:
 ## Planned API
 
 ```ts
-import { renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+import { renderPdfThumbnails } from "pdfium-node";
 
 const thumbnails = await renderPdfThumbnails(pdfBytes, {
   pages: [1],
@@ -48,7 +48,7 @@ The macOS arm64 and Linux x64 glibc implementations currently support PNG and JP
 
 ```ts
 import { readFile } from "node:fs/promises";
-import { renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+import { renderPdfThumbnails } from "pdfium-node";
 
 const pdf = await readFile("document.pdf");
 const [thumbnail] = await renderPdfThumbnails(pdf, {

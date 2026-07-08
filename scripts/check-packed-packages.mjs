@@ -11,7 +11,7 @@ const npmCacheDirectory = join(tempDirectory, "npm-cache-pack");
 
 const packages = [
   {
-    workspace: "@sebastian-software/pdfium-node",
+    workspace: "pdfium-node",
     requiredFiles: [
       "src/index.js",
       "src/index.d.ts",
@@ -21,7 +21,7 @@ const packages = [
     ],
   },
   {
-    workspace: "@sebastian-software/pdfium-node-darwin-arm64",
+    workspace: "pdfium-node-darwin-arm64",
     requiredFiles: [
       "index.js",
       "image-codecs.js",
@@ -41,7 +41,7 @@ const packages = [
         : [],
   },
   {
-    workspace: "@sebastian-software/pdfium-node-linux-x64-gnu",
+    workspace: "pdfium-node-linux-x64-gnu",
     requiredFiles: [
       "index.js",
       "image-codecs.js",

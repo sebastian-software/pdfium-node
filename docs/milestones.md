@@ -14,7 +14,7 @@ Exit criteria: contributors can understand the project direction, decision proce
 - [x] Add `CODE_OF_CONDUCT.md`.
 - [x] Add `SECURITY.md` with vulnerability reporting expectations.
 - [x] Add ADR index linking all accepted ADRs.
-- [x] Decide final npm package name: `@sebastian-software/pdfium-node` or `pdfium-node`.
+- [x] Decide final npm package name: `pdfium-node`.
 - [x] Decide minimum supported Node.js version.
 - [x] Decide whether Linux arm64 and macOS x64 are initial or follow-up targets.
 - [x] Decide first-release behavior for encrypted PDFs and password support.

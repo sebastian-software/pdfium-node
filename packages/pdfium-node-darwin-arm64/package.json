@@ -1,7 +1,7 @@
 {
-  "name": "@sebastian-software/pdfium-node-darwin-arm64",
+  "name": "pdfium-node-darwin-arm64",
   "version": "0.0.0",
-  "description": "macOS arm64 native package for @sebastian-software/pdfium-node.",
+  "description": "macOS arm64 native package for pdfium-node.",
   "type": "module",
   "main": "./index.js",
   "files": [

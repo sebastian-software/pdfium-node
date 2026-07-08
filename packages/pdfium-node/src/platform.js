@@ -1,8 +1,8 @@
 import { ErrorCodes, PdfiumNodeError } from "./errors.js";
 
 const supportedPackages = new Map([
-  ["darwin:arm64", "@sebastian-software/pdfium-node-darwin-arm64"],
-  ["linux:x64", "@sebastian-software/pdfium-node-linux-x64-gnu"],
+  ["darwin:arm64", "pdfium-node-darwin-arm64"],
+  ["linux:x64", "pdfium-node-linux-x64-gnu"],
 ]);
 
 export function getPlatformPackageName(platform = process.platform, arch = process.arch) {

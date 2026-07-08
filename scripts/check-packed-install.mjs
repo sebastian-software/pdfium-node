@@ -12,9 +12,9 @@ const projectDirectory = join(tempDirectory, "project");
 const npmCacheDirectory = join(tempDirectory, "npm-cache");
 
 const workspacePackages = [
-  "@sebastian-software/pdfium-node",
-  "@sebastian-software/pdfium-node-darwin-arm64",
-  "@sebastian-software/pdfium-node-linux-x64-gnu",
+  "pdfium-node",
+  "pdfium-node-darwin-arm64",
+  "pdfium-node-linux-x64-gnu",
 ];
 
 await rm(tempDirectory, { force: true, recursive: true });
@@ -59,7 +59,7 @@ try {
       "--input-type=module",
       "--eval",
       `
-        import { ErrorCodes, PdfiumNodeError, renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+        import { ErrorCodes, PdfiumNodeError, renderPdfThumbnails } from "pdfium-node";
         import { pathToFileURL } from "node:url";
 
         const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
@@ -73,7 +73,7 @@ try {
         }
 
         const platformModuleUrl = pathToFileURL(
-          "node_modules/@sebastian-software/pdfium-node/src/platform.js"
+          "node_modules/pdfium-node/src/platform.js"
         );
         const { loadNativePackage } = await import(platformModuleUrl);
 

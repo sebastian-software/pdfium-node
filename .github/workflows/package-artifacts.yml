@@ -19,12 +19,12 @@ jobs:
           - name: linux-x64-gnu
             os: ubuntu-latest
             packages: >-
-              @sebastian-software/pdfium-node
-              @sebastian-software/pdfium-node-linux-x64-gnu
+              pdfium-node
+              pdfium-node-linux-x64-gnu
           - name: darwin-arm64
             os: macos-latest
             packages: >-
-              @sebastian-software/pdfium-node-darwin-arm64
+              pdfium-node-darwin-arm64
     steps:
       - name: Checkout
         uses: actions/checkout@v4

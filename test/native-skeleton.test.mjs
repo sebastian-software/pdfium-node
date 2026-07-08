@@ -25,7 +25,7 @@ describe("native skeleton", () => {
 function getExpectedNativePackage() {
   if (process.platform === "darwin" && process.arch === "arm64") {
     return {
-      packageName: "@sebastian-software/pdfium-node-darwin-arm64",
+      packageName: "pdfium-node-darwin-arm64",
       platform: "darwin",
       arch: "arm64",
     };
@@ -33,7 +33,7 @@ function getExpectedNativePackage() {
 
   if (process.platform === "linux" && process.arch === "x64") {
     return {
-      packageName: "@sebastian-software/pdfium-node-linux-x64-gnu",
+      packageName: "pdfium-node-linux-x64-gnu",
       platform: "linux",
       arch: "x64",
     };

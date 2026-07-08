@@ -58,7 +58,7 @@ async function measureColdStart() {
   const probe = `
     import { performance } from "node:perf_hooks";
     import { readFile } from "node:fs/promises";
-    import { renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+    import { renderPdfThumbnails } from "pdfium-node";
     const pdf = await readFile("fixtures/simple-one-page.pdf");
     const start = performance.now();
     const [thumbnail] = await renderPdfThumbnails(pdf, {

@@ -17,11 +17,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - package: "@sebastian-software/pdfium-node"
+          - package: "pdfium-node"
             os: ubuntu-latest
-          - package: "@sebastian-software/pdfium-node-linux-x64-gnu"
+          - package: "pdfium-node-linux-x64-gnu"
             os: ubuntu-latest
-          - package: "@sebastian-software/pdfium-node-darwin-arm64"
+          - package: "pdfium-node-darwin-arm64"
             os: macos-latest
     steps:
       - name: Checkout

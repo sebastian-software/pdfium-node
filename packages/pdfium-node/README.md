@@ -1,4 +1,4 @@
-# @sebastian-software/pdfium-node
+# pdfium-node
 
 Native PDFium access for Node.js.
 
@@ -8,7 +8,7 @@ The package currently provides option validation, typed errors, worker-process i
 
 ```ts
 import { readFile } from "node:fs/promises";
-import { renderPdfThumbnails } from "@sebastian-software/pdfium-node";
+import { renderPdfThumbnails } from "pdfium-node";
 
 const pdf = await readFile("document.pdf");
 const thumbnails = await renderPdfThumbnails(pdf, {

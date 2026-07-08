@@ -23,7 +23,7 @@ The repository and npm package should be positioned as a PDFium-backed Node.js p
 Recommended framing:
 
 - repository: `sebastian-software/pdfium-node`;
-- primary package: `@sebastian-software/pdfium-node` if the npm scope is available, otherwise `pdfium-node`;
+- primary package: `pdfium-node`;
 - license for project-owned code: MIT;
 - runtime support: Node.js active LTS versions at the time of the first stable release;
 - initial platforms: Linux x64 glibc and macOS arm64;
@@ -257,11 +257,11 @@ Publish a JavaScript wrapper package plus optional platform packages.
 Example package layout:
 
 ```text
-@sebastian-software/pdfium-node
-@sebastian-software/pdfium-node-linux-x64-gnu
-@sebastian-software/pdfium-node-linux-arm64-gnu
-@sebastian-software/pdfium-node-darwin-arm64
-@sebastian-software/pdfium-node-darwin-x64
+pdfium-node
+pdfium-node-linux-x64-gnu
+pdfium-node-linux-arm64-gnu
+pdfium-node-darwin-arm64
+pdfium-node-darwin-x64
 ```
 
 Initial platform support:
@@ -432,13 +432,13 @@ Exit criteria:
 - Broad "PDFium for Node" positioning could imply unsupported low-level bindings.
 - Platform packages can fail in real deployments if libc, CPU architecture, or dynamic library assumptions are too broad.
 - PDFium update cadence may be faster than maintainer capacity.
-- npm scope availability may affect final package naming.
+- npm package naming needs to stay aligned across the wrapper, platform packages, Release Please, and Trusted Publishing.
 
 ## Open Questions
 
 These should be resolved before implementation work starts:
 
-1. Should the first npm package be scoped as `@sebastian-software/pdfium-node`, or should it use the unscoped `pdfium-node` name if available?
+1. Should the first npm package be scoped or unscoped?
 2. Is the first consumer only thumbnail generation, or does it also need page count before choosing pages?
 3. What minimum Node.js version should the first release support?
 4. Is Linux arm64 required for the first release, or can it follow after Linux x64 glibc and macOS arm64?

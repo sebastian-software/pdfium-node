@@ -1,12 +1,12 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import * as pdfiumNode from "@sebastian-software/pdfium-node";
+import * as pdfiumNode from "pdfium-node";
 import {
   ErrorCodes,
   PdfiumNodeError,
   renderPdfThumbnails,
-} from "@sebastian-software/pdfium-node";
+} from "pdfium-node";
 import { getPlatformPackageName } from "../packages/pdfium-node/src/platform.js";
 import { renderInWorker } from "../packages/pdfium-node/src/worker.js";
 
@@ -315,14 +315,14 @@ describe("platform package resolution", () => {
   it("maps macOS arm64", () => {
     assert.equal(
       getPlatformPackageName("darwin", "arm64"),
-      "@sebastian-software/pdfium-node-darwin-arm64"
+      "pdfium-node-darwin-arm64"
     );
   });
 
   it("maps Linux x64 glibc", () => {
     assert.equal(
       getPlatformPackageName("linux", "x64"),
-      "@sebastian-software/pdfium-node-linux-x64-gnu"
+      "pdfium-node-linux-x64-gnu"
     );
   });
 
