@@ -1,6 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import * as pdfiumNode from "@sebastian-software/pdfium-node";
 import {
   ErrorCodes,
   PdfiumNodeError,
@@ -13,6 +14,33 @@ const pdfBytes = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
 const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
 const jpegStart = [255, 216];
 const jpegEnd = [255, 217];
+
+describe("public API surface", () => {
+  it("exports the stable MVP symbols", () => {
+    assert.deepEqual(Object.keys(pdfiumNode).sort(), [
+      "ErrorCodes",
+      "PdfiumNodeError",
+      "renderPdfThumbnails",
+    ]);
+  });
+
+  it("keeps stable error code strings", () => {
+    assert.deepEqual(ErrorCodes, {
+      UnsupportedPlatform: "PDFIUM_NODE_UNSUPPORTED_PLATFORM",
+      MissingNativePackage: "PDFIUM_NODE_MISSING_NATIVE_PACKAGE",
+      InvalidOptions: "PDFIUM_NODE_INVALID_OPTIONS",
+      InvalidPage: "PDFIUM_NODE_INVALID_PAGE",
+      MalformedPdf: "PDFIUM_NODE_MALFORMED_PDF",
+      EncryptedPdf: "PDFIUM_NODE_ENCRYPTED_PDF",
+      PasswordRequired: "PDFIUM_NODE_PASSWORD_REQUIRED",
+      IncorrectPassword: "PDFIUM_NODE_INCORRECT_PASSWORD",
+      RenderTimeout: "PDFIUM_NODE_RENDER_TIMEOUT",
+      PixelLimitExceeded: "PDFIUM_NODE_PIXEL_LIMIT_EXCEEDED",
+      PdfiumError: "PDFIUM_NODE_PDFIUM_ERROR",
+      WorkerCrashed: "PDFIUM_NODE_WORKER_CRASHED",
+    });
+  });
+});
 
 describe("renderPdfThumbnails", () => {
   it("rejects missing page requests", async () => {

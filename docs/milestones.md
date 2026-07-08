@@ -189,8 +189,8 @@ Goal: declare the public API and platform support stable.
 Exit criteria: the package is safe to recommend for supported backend thumbnail rendering use cases.
 
 - [x] Resolve all MVP open questions from the RFC.
-- [ ] Confirm public API stability ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
-- [ ] Confirm typed error code stability ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
+- [x] Confirm public API stability.
+- [x] Confirm typed error code stability.
 - [ ] Confirm Linux x64 glibc support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [ ] Confirm macOS arm64 support ([#10](https://github.com/sebastian-software/pdfium-node/issues/10)).
 - [x] Confirm active Node.js LTS support policy.
