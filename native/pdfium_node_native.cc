@@ -9,6 +9,18 @@
 #include <string>
 #include <vector>
 
+#ifndef PDFIUM_NODE_PLATFORM
+#define PDFIUM_NODE_PLATFORM "unknown"
+#endif
+
+#ifndef PDFIUM_NODE_ARCH
+#define PDFIUM_NODE_ARCH "unknown"
+#endif
+
+#ifndef PDFIUM_NODE_REVISION
+#define PDFIUM_NODE_REVISION "unknown"
+#endif
+
 namespace {
 
 std::once_flag pdfium_once;
@@ -235,11 +247,11 @@ napi_value GetNativeBuildInfo(napi_env env, napi_callback_info /* info */) {
   napi_create_object(env, &result);
 
   napi_set_named_property(env, result, "backend", MakeString(env, "node-api"));
-  napi_set_named_property(env, result, "platform", MakeString(env, "darwin"));
-  napi_set_named_property(env, result, "arch", MakeString(env, "arm64"));
+  napi_set_named_property(env, result, "platform", MakeString(env, PDFIUM_NODE_PLATFORM));
+  napi_set_named_property(env, result, "arch", MakeString(env, PDFIUM_NODE_ARCH));
   napi_set_named_property(env, result, "pdfiumLinked", MakeBoolean(env, true));
   napi_set_named_property(env, result, "pdfiumSource", MakeString(env, "bblanchon/pdfium-binaries"));
-  napi_set_named_property(env, result, "pdfiumRevision", MakeString(env, "chromium/7934"));
+  napi_set_named_property(env, result, "pdfiumRevision", MakeString(env, PDFIUM_NODE_REVISION));
 
   return result;
 }

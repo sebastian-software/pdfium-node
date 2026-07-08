@@ -7,7 +7,7 @@ import { fail, root } from "./lib/repo.mjs";
 const execFileAsync = promisify(execFile);
 const tempDirectory = join(root, ".tmp");
 const packDirectory = join(tempDirectory, "pack");
-const npmCacheDirectory = join(tempDirectory, "npm-cache");
+const npmCacheDirectory = join(tempDirectory, "npm-cache-pack");
 
 const packages = [
   {
@@ -48,6 +48,15 @@ const packages = [
       "THIRD_PARTY_NOTICES.md",
       "package.json",
     ],
+    platformRequiredFiles:
+      process.platform === "linux" && process.arch === "x64"
+        ? [
+            "prebuilds/linux-x64-gnu/pdfium_node_native.node",
+            "prebuilds/linux-x64-gnu/libpdfium.so",
+            "prebuilds/linux-x64-gnu/PDFIUM_VERSION",
+            "prebuilds/linux-x64-gnu/licenses/pdfium.txt",
+          ]
+        : [],
   },
 ];
 
@@ -88,5 +97,6 @@ try {
     }
   }
 } finally {
-  await rm(tempDirectory, { force: true, recursive: true });
+  await rm(packDirectory, { force: true, recursive: true });
+  await rm(npmCacheDirectory, { force: true, recursive: true });
 }

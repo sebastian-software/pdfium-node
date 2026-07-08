@@ -7,8 +7,8 @@ This project is in early implementation. The first production capability is sele
 Current implementation status:
 
 - macOS arm64 can render selected pages to PNG through native PDFium.
+- Linux x64 glibc has the same native PNG rendering path configured for Linux builds.
 - JPEG encoding is not implemented yet.
-- Linux x64 glibc packaging exists, but native PDFium rendering is still pending.
 
 ## Goals
 
@@ -43,7 +43,7 @@ const thumbnails = await renderPdfThumbnails(pdfBytes, {
 });
 ```
 
-The macOS arm64 implementation currently supports PNG output. JPEG output still fails with a typed PDFium error until the encoder is implemented.
+The macOS arm64 and Linux x64 glibc implementations currently support PNG output when built on their target platforms. JPEG output still fails with a typed PDFium error until the encoder is implemented.
 
 ## Platform Policy
 

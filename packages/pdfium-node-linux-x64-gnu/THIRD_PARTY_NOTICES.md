@@ -1,5 +1,11 @@
 # Third-Party Notices
 
-No PDFium binary is bundled yet.
+This package bundles PDFium binaries from `bblanchon/pdfium-binaries`, pinned to `chromium/7934`.
 
-This file is intentionally present so package validation can enforce notice files before native binaries are added.
+The generated npm package also includes the upstream PDFium license files under:
+
+```text
+prebuilds/linux-x64-gnu/licenses/
+```
+
+The source repository tracks the upstream PDFium license at `third_party/pdfium/LICENSE`.

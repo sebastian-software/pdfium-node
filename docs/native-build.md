@@ -7,10 +7,10 @@ It proves that platform packages can load a native `.node` addon, link PDFium, a
 ## Current Status
 
 - Binding approach: direct C Node-API from C++.
-- Local implemented target: `darwin-arm64`.
-- Linux x64 package target: package placeholder, native build still pending.
-- PDFium linked: yes on `darwin-arm64`.
-- Rendering: PNG output on `darwin-arm64`; JPEG output pending.
+- Implemented targets: `darwin-arm64`, `linux-x64-gnu`.
+- Locally verified target in this workspace: `darwin-arm64`.
+- PDFium linked: yes on supported native build targets.
+- Rendering: PNG output on supported native build targets; JPEG output pending.
 - PDFium license reference: `third_party/pdfium/LICENSE`.
 - PDFium binary source: `bblanchon/pdfium-binaries`, pinned to `chromium/7934`.
 
@@ -24,6 +24,12 @@ On `darwin-arm64`, this builds:
 
 ```text
 packages/pdfium-node-darwin-arm64/prebuilds/darwin-arm64/pdfium_node_native.node
+```
+
+On `linux-x64`, this builds:
+
+```text
+packages/pdfium-node-linux-x64-gnu/prebuilds/linux-x64-gnu/pdfium_node_native.node
 ```
 
 Other platforms currently skip the native build until their platform build is implemented.
