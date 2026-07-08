@@ -11,6 +11,8 @@ import { renderInWorker } from "../packages/pdfium-node/src/worker.js";
 
 const pdfBytes = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
 const pngSignature = [137, 80, 78, 71, 13, 10, 26, 10];
+const jpegStart = [255, 216];
+const jpegEnd = [255, 217];
 
 describe("renderPdfThumbnails", () => {
   it("rejects missing page requests", async () => {
@@ -58,12 +60,12 @@ describe("renderPdfThumbnails", () => {
     );
   });
 
-  it("reaches the native placeholder on supported development platforms", async () => {
+  it("returns a typed error for incomplete PDF input", async () => {
     await assert.rejects(
       () => renderPdfThumbnails(pdfBytes, { pages: [1] }),
       (error) =>
         error instanceof PdfiumNodeError &&
-        error.code === ErrorCodes.PdfiumError
+        error.code === ErrorCodes.MalformedPdf
     );
   });
 
@@ -197,18 +199,32 @@ describe("renderPdfThumbnails", () => {
     );
   });
 
-  it("returns a typed error for JPEG output until the encoder lands", async () => {
+  it("renders JPEG output with explicit quality", async () => {
     const fixture = await readFile("fixtures/simple-one-page.pdf");
 
+    const [thumbnail] = await renderPdfThumbnails(fixture, {
+      pages: [1],
+      format: "jpeg",
+      quality: 80,
+      maxWidth: 120,
+    });
+
+    assert.equal(thumbnail.page, 1);
+    assert.equal(thumbnail.width, 120);
+    assert.equal(thumbnail.height, 120);
+    assert.equal(thumbnail.mimeType, "image/jpeg");
+    assert.deepEqual(Array.from(thumbnail.data.slice(0, 2)), jpegStart);
+    assert.deepEqual(Array.from(thumbnail.data.slice(-2)), jpegEnd);
+    assert.deepEqual(readJpegDimensions(thumbnail.data), { width: 120, height: 120 });
+    assert.ok(thumbnail.data.byteLength > 100);
+  });
+
+  it("rejects invalid JPEG quality values", async () => {
     await assert.rejects(
-      () =>
-        renderPdfThumbnails(fixture, {
-          pages: [1],
-          format: "jpeg",
-        }),
+      () => renderPdfThumbnails(pdfBytes, { pages: [1], format: "jpeg", quality: 0 }),
       (error) =>
         error instanceof PdfiumNodeError &&
-        error.code === ErrorCodes.PdfiumError
+        error.code === ErrorCodes.InvalidOptions
     );
   });
 
@@ -241,6 +257,30 @@ function isProcessRunning(pid) {
 
     throw error;
   }
+}
+
+function readJpegDimensions(bytes) {
+  let offset = 2;
+
+  while (offset < bytes.length) {
+    if (bytes[offset] !== 0xff) {
+      throw new Error("Invalid JPEG marker");
+    }
+
+    const marker = bytes[offset + 1];
+    const length = (bytes[offset + 2] << 8) | bytes[offset + 3];
+
+    if (marker === 0xc0) {
+      return {
+        height: (bytes[offset + 5] << 8) | bytes[offset + 6],
+        width: (bytes[offset + 7] << 8) | bytes[offset + 8],
+      };
+    }
+
+    offset += 2 + length;
+  }
+
+  throw new Error("JPEG SOF0 marker not found");
 }
 
 describe("platform package resolution", () => {

@@ -47,7 +47,7 @@ Exit criteria: one fixture page renders to image bytes on macOS arm64 and Linux 
 - [x] Add minimal native package skeleton.
 - [x] Link or bundle a known PDFium build for local development.
 - [x] Render one page from PDF bytes to an in-memory bitmap.
-- [ ] Encode JPEG output.
+- [x] Encode JPEG output.
 - [x] Return width, height, MIME type, page number, and image bytes to JavaScript.
 - [x] Measure binary size.
 - [x] Measure cold-start render time.
@@ -67,7 +67,7 @@ Exit criteria: callers can render selected pages with validated options and stab
 - [x] Implement `maxWidth`.
 - [x] Implement `maxPixels`.
 - [x] Implement `maxInputBytes`.
-- [ ] Implement JPEG output with `quality`.
+- [x] Implement JPEG output with `quality`.
 - [x] Implement PNG output.
 - [x] Implement `background` behavior.
 - [x] Decide whether to include `getPdfDocumentInfo` in the MVP.
@@ -172,7 +172,7 @@ Goal: publish a pre-1.0 package that proves the full operational path.
 
 Exit criteria: a real user can install the package from npm and render a fixture on supported platforms.
 
-- [ ] Complete all Milestone 0-8 required items.
+- [x] Complete all Milestone 0-8 required items.
 - [ ] Publish first pre-1.0 release.
 - [ ] Verify npm install on Linux x64 glibc.
 - [ ] Verify npm install on macOS arm64.

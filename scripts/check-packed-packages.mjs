@@ -24,6 +24,7 @@ const packages = [
     workspace: "@sebastian-software/pdfium-node-darwin-arm64",
     requiredFiles: [
       "index.js",
+      "image-codecs.js",
       "README.md",
       "LICENSE",
       "THIRD_PARTY_NOTICES.md",
@@ -43,6 +44,7 @@ const packages = [
     workspace: "@sebastian-software/pdfium-node-linux-x64-gnu",
     requiredFiles: [
       "index.js",
+      "image-codecs.js",
       "README.md",
       "LICENSE",
       "THIRD_PARTY_NOTICES.md",

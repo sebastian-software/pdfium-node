@@ -2,17 +2,6 @@
 
 This document keeps issue-ready follow-up work in the repository until the public GitHub issue tracker is available. Once the repository is public, each item should become a GitHub issue and link back to the milestone it supports.
 
-## JPEG Output
-
-Implement `format: "jpeg"` and apply the `quality` option consistently across supported platforms.
-
-Acceptance criteria:
-
-- `renderPdfThumbnails` returns `image/jpeg` bytes for JPEG requests.
-- `quality` accepts the documented `1` to `100` range.
-- Tests cover JPEG output and invalid quality values.
-- README examples can use JPEG once the encoder is stable.
-
 ## Password-Protected PDFs
 
 Decide whether password-protected PDFs belong in the stable API.

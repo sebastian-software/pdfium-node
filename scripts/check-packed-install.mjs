@@ -66,7 +66,7 @@ try {
           throw new Error("Expected native placeholder to fail");
         } catch (error) {
           if (!(error instanceof PdfiumNodeError)) throw error;
-          if (error.code !== ErrorCodes.PdfiumError) throw error;
+          if (error.code !== ErrorCodes.MalformedPdf) throw error;
         }
       `,
     ],

@@ -2,7 +2,7 @@
 
 Native PDFium access for Node.js.
 
-The package currently provides option validation, typed errors, worker-process isolation, platform package resolution, and PNG rendering through native PDFium on supported platform builds.
+The package currently provides option validation, typed errors, worker-process isolation, platform package resolution, and PNG/JPEG rendering through native PDFium on supported platform builds.
 
 ## Current Usage
 
@@ -20,7 +20,6 @@ const thumbnails = await renderPdfThumbnails(pdf, {
 
 ## Known Limitations
 
-- JPEG output is not implemented yet.
 - Password-protected and encrypted PDFs are rejected in the MVP.
 - Only Linux x64 glibc and macOS arm64 are initial native package targets.
 - Raw PDFium handles, document metadata, text extraction, and full PDFium API coverage are out of scope.

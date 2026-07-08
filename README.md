@@ -6,9 +6,8 @@ This project is in early implementation. The first production capability is sele
 
 Current implementation status:
 
-- macOS arm64 can render selected pages to PNG through native PDFium.
-- Linux x64 glibc has the same native PNG rendering path configured for Linux builds.
-- JPEG encoding is not implemented yet.
+- macOS arm64 can render selected pages to PNG and JPEG through native PDFium.
+- Linux x64 glibc has the same native PNG and JPEG rendering path configured for Linux builds.
 
 ## Goals
 
@@ -43,7 +42,7 @@ const thumbnails = await renderPdfThumbnails(pdfBytes, {
 });
 ```
 
-The macOS arm64 and Linux x64 glibc implementations currently support PNG output when built on their target platforms. JPEG output still fails with a typed PDFium error until the encoder is implemented.
+The macOS arm64 and Linux x64 glibc implementations currently support PNG and JPEG output when built on their target platforms.
 
 ## Current Quick Start
 
@@ -65,8 +64,7 @@ console.log(thumbnail.page, thumbnail.width, thumbnail.height, thumbnail.mimeTyp
 
 ## Known Limitations
 
-- JPEG output is part of the planned API but is not implemented yet. Requests with `format: "jpeg"` currently fail with a typed PDFium error.
-- The `quality` option is reserved for JPEG output and has no effect on PNG output.
+- The `quality` option applies to JPEG output and has no effect on PNG output.
 - Only a white background is currently supported. Transparent PNG output is intentionally deferred.
 - Password-protected and encrypted PDFs are rejected in the MVP.
 - The package does not expose document metadata, page count, text extraction, raw PDFium handles, or a general PDFium API.
