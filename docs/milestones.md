@@ -59,21 +59,21 @@ Goal: expose the first task-oriented JavaScript API.
 
 Exit criteria: callers can render selected pages with validated options and stable error codes.
 
-- [ ] Implement `renderPdfThumbnails(pdf, options)`.
-- [ ] Validate required `pages` input.
-- [ ] Use 1-based page numbers in the public API.
+- [x] Implement `renderPdfThumbnails(pdf, options)`.
+- [x] Validate required `pages` input.
+- [x] Use 1-based page numbers in the public API.
 - [ ] Preserve requested page order in results.
 - [ ] Decide and implement duplicate page behavior.
-- [ ] Implement `maxWidth`.
-- [ ] Implement `maxPixels`.
-- [ ] Implement `maxInputBytes`.
+- [x] Implement `maxWidth`.
+- [x] Implement `maxPixels`.
+- [x] Implement `maxInputBytes`.
 - [ ] Implement JPEG output with `quality`.
 - [ ] Implement PNG output.
-- [ ] Implement `background` behavior.
-- [ ] Decide whether to include `getPdfDocumentInfo` in the MVP.
-- [ ] Normalize typed errors with stable `code` values.
-- [ ] Add TypeScript declarations for the public API.
-- [ ] Add API examples to README.
+- [x] Implement `background` behavior.
+- [x] Decide whether to include `getPdfDocumentInfo` in the MVP.
+- [x] Normalize typed errors with stable `code` values.
+- [x] Add TypeScript declarations for the public API.
+- [x] Add API examples to README.
 
 ## Milestone 4: Process Isolation and Resource Limits
 
@@ -98,17 +98,17 @@ Goal: make prebuilt package installation work on supported platforms.
 
 Exit criteria: the wrapper package loads the correct native package and gives useful errors otherwise.
 
-- [ ] Create wrapper package.
-- [ ] Create Linux x64 glibc native package.
-- [ ] Create macOS arm64 native package.
-- [ ] Add optional native package dependency resolution.
-- [ ] Detect unsupported platform and architecture combinations.
-- [ ] Return `PDFIUM_NODE_UNSUPPORTED_PLATFORM` for unsupported targets.
-- [ ] Return `PDFIUM_NODE_MISSING_NATIVE_PACKAGE` when the expected native package is not installed.
+- [x] Create wrapper package.
+- [x] Create Linux x64 glibc native package.
+- [x] Create macOS arm64 native package.
+- [x] Add optional native package dependency resolution.
+- [x] Detect unsupported platform and architecture combinations.
+- [x] Return `PDFIUM_NODE_UNSUPPORTED_PLATFORM` for unsupported targets.
+- [x] Return `PDFIUM_NODE_MISSING_NATIVE_PACKAGE` when the expected native package is not installed.
 - [ ] Verify install from packed tarballs in a clean fixture project.
 - [ ] Verify runtime loading from packed tarballs.
-- [ ] Keep source compilation disabled unless intentionally supported and tested.
-- [ ] Document musl Linux as unsupported unless a dedicated target is added.
+- [x] Keep source compilation disabled unless intentionally supported and tested.
+- [x] Document musl Linux as unsupported unless a dedicated target is added.
 
 ## Milestone 6: Fixture Coverage and CI Matrix
 
@@ -127,7 +127,7 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [ ] Test timeout behavior.
 - [ ] Test repeated render calls for process or memory leaks.
 - [ ] Test platform package resolution.
-- [ ] Test typed error codes and safe metadata.
+- [x] Test typed error codes and safe metadata.
 - [ ] Add Linux x64 glibc CI coverage.
 - [ ] Add macOS arm64 CI coverage.
 - [ ] Add supported Node.js active LTS versions to CI.

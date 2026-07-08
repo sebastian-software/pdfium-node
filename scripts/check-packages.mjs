@@ -24,4 +24,22 @@ for (const directory of plannedPackages) {
   if (!(await fileExists(`${directory}/package.json`))) {
     fail(`Missing planned package manifest: ${directory}/package.json`);
   }
+
+  if (!(await fileExists(`${directory}/README.md`))) {
+    fail(`Missing package README: ${directory}/README.md`);
+  }
+
+  if (!(await fileExists(`${directory}/LICENSE`))) {
+    fail(`Missing package license: ${directory}/LICENSE`);
+  }
+}
+
+for (const directory of plannedPackages.slice(1)) {
+  if (!(await fileExists(`${directory}/THIRD_PARTY_NOTICES.md`))) {
+    fail(`Missing native package notices: ${directory}/THIRD_PARTY_NOTICES.md`);
+  }
+}
+
+if (!(await fileExists("packages/pdfium-node/src/index.d.ts"))) {
+  fail("Wrapper package must publish TypeScript declarations");
 }
