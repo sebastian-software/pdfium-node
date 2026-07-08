@@ -11,6 +11,10 @@ Releases are managed with Release Please and npm Trusted Publishing.
 5. Release Please creates the GitHub release.
 6. The publish workflow publishes npm packages from GitHub Actions using Trusted Publishing.
 
+## Preview Release
+
+The first public preview release is forced to `0.1.0` through `release-as` in `release-please-config.json`. Remove that override after the preview release pull request is merged, otherwise later release pull requests will continue to target the same version.
+
 ## Packages
 
 The release configuration covers:
