@@ -29,6 +29,10 @@ const packages = [
       "THIRD_PARTY_NOTICES.md",
       "package.json",
     ],
+    platformRequiredFiles:
+      process.platform === "darwin" && process.arch === "arm64"
+        ? ["prebuilds/darwin-arm64/pdfium_node_native.node"]
+        : [],
   },
   {
     workspace: "@sebastian-software/pdfium-node-linux-x64-gnu",
@@ -69,7 +73,10 @@ try {
     const [packResult] = JSON.parse(stdout);
     const packedFiles = new Set(packResult.files.map((file) => file.path));
 
-    for (const file of packageSpec.requiredFiles) {
+    for (const file of [
+      ...packageSpec.requiredFiles,
+      ...(packageSpec.platformRequiredFiles ?? []),
+    ]) {
       if (!packedFiles.has(file)) {
         fail(`${packageSpec.workspace} package is missing ${file}`);
       }

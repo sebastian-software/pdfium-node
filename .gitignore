@@ -2,6 +2,7 @@ node_modules/
 dist/
 coverage/
 .tmp/
+packages/*/prebuilds/
 *.tgz
 .DS_Store
 .env

@@ -60,6 +60,7 @@ The minimum supported Node.js version is 22. The project targets active Node.js 
 - [RFC](./pdfium-thumbnail-renderer-rfc.md)
 - [Milestone plan](./docs/milestones.md)
 - [Architecture Decision Records](./docs/adr/README.md)
+- [Native build](./docs/native-build.md)
 - [Releasing](./docs/releasing.md)
 - [Contributing](./CONTRIBUTING.md)
 - [Security](./SECURITY.md)

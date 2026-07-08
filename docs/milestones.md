@@ -42,9 +42,9 @@ Goal: prove that Node.js can render a PDF page through native PDFium without PDF
 
 Exit criteria: one fixture page renders to image bytes on macOS arm64 and Linux x64.
 
-- [ ] Select initial native binding implementation: `napi-rs` unless the spike proves `node-addon-api` is materially simpler.
-- [ ] Record binding decision or change as an ADR if the RFC direction changes.
-- [ ] Add minimal native package skeleton.
+- [x] Select initial native binding implementation: `napi-rs` unless the spike proves `node-addon-api` is materially simpler.
+- [x] Record binding decision or change as an ADR if the RFC direction changes.
+- [x] Add minimal native package skeleton.
 - [ ] Link or bundle a known PDFium build for local development.
 - [ ] Render one page from PDF bytes to an in-memory bitmap.
 - [ ] Encode JPEG output.

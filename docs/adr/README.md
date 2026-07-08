@@ -14,3 +14,4 @@ Accepted ADRs are immutable. If a decision changes, create a new ADR that supers
 - [0008. Use Conventional Commits](./0008-use-conventional-commits.md)
 - [0009. Use Release Please and npm Trusted Publishing](./0009-use-release-please-and-npm-trusted-publishing.md)
 - [0010. Set the MVP package and support baseline](./0010-set-the-mvp-package-and-support-baseline.md)
+- [0011. Use direct Node-API for the native skeleton](./0011-use-direct-node-api-for-the-native-skeleton.md)

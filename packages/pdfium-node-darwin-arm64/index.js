@@ -1,12 +1,16 @@
-import { ErrorCodes, PdfiumNodeError } from "@sebastian-software/pdfium-node";
+import { createRequire } from "node:module";
 
-export async function renderPdfThumbnailsNative(_pdf, options = {}) {
+const require = createRequire(import.meta.url);
+const native = require("./prebuilds/darwin-arm64/pdfium_node_native.node");
+
+export function getNativeBuildInfo() {
+  return native.getNativeBuildInfo();
+}
+
+export async function renderPdfThumbnailsNative(pdf, options = {}) {
   if (options.timeoutMs <= 1) {
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
 
-  throw new PdfiumNodeError(
-    ErrorCodes.PdfiumError,
-    "Native PDFium rendering is not implemented for darwin-arm64 yet."
-  );
+  return native.renderPdfThumbnailsNative(pdf, options);
 }

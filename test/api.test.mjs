@@ -61,8 +61,7 @@ describe("renderPdfThumbnails", () => {
       () => renderPdfThumbnails(pdfBytes, { pages: [1] }),
       (error) =>
         error instanceof PdfiumNodeError &&
-        error.code === ErrorCodes.PdfiumError &&
-        error.message.includes("not implemented")
+        error.code === ErrorCodes.PdfiumError
     );
   });
 
