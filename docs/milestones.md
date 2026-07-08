@@ -8,17 +8,17 @@ Goal: make the repository ready for public implementation work.
 
 Exit criteria: contributors can understand the project direction, decision process, commit rules, and release model before reading implementation code.
 
-- [ ] Add `README.md` with project summary, status, supported platforms, non-goals, and licensing note.
-- [ ] Add `LICENSE` for project-owned MIT code.
-- [ ] Add `CONTRIBUTING.md` with English-language contribution rules and Conventional Commit guidance.
-- [ ] Add `CODE_OF_CONDUCT.md`.
-- [ ] Add `SECURITY.md` with vulnerability reporting expectations.
-- [ ] Add ADR index linking all accepted ADRs.
-- [ ] Decide final npm package name: `@sebastian-software/pdfium-node` or `pdfium-node`.
-- [ ] Decide minimum supported Node.js version.
-- [ ] Decide whether Linux arm64 and macOS x64 are initial or follow-up targets.
-- [ ] Decide first-release behavior for encrypted PDFs and password support.
-- [ ] Decide whether PNG transparency is preserved or all output is flattened.
+- [x] Add `README.md` with project summary, status, supported platforms, non-goals, and licensing note.
+- [x] Add `LICENSE` for project-owned MIT code.
+- [x] Add `CONTRIBUTING.md` with English-language contribution rules and Conventional Commit guidance.
+- [x] Add `CODE_OF_CONDUCT.md`.
+- [x] Add `SECURITY.md` with vulnerability reporting expectations.
+- [x] Add ADR index linking all accepted ADRs.
+- [x] Decide final npm package name: `@sebastian-software/pdfium-node` or `pdfium-node`.
+- [x] Decide minimum supported Node.js version.
+- [x] Decide whether Linux arm64 and macOS x64 are initial or follow-up targets.
+- [x] Decide first-release behavior for encrypted PDFs and password support.
+- [x] Decide whether PNG transparency is preserved or all output is flattened.
 
 ## Milestone 1: Repository and Tooling Baseline
 
