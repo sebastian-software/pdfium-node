@@ -128,9 +128,9 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [ ] Test repeated render calls for process or memory leaks.
 - [ ] Test platform package resolution.
 - [x] Test typed error codes and safe metadata.
-- [ ] Add Linux x64 glibc CI coverage.
+- [x] Add Linux x64 glibc CI coverage.
 - [ ] Add macOS arm64 CI coverage.
-- [ ] Add supported Node.js active LTS versions to CI.
+- [x] Add supported Node.js active LTS versions to CI.
 - [ ] Add packed-tarball smoke tests to CI.
 
 ## Milestone 7: Licensing, Notices, and Supply Chain
@@ -141,13 +141,13 @@ Exit criteria: every package that ships binaries includes the required notices a
 
 - [ ] Include PDFium license text.
 - [ ] Include required third-party notices for the bundled PDFium build.
-- [ ] Add publish-time check for license and notice files.
-- [ ] Document that MIT applies only to project-owned wrapper code.
-- [ ] Document bundled PDFium binary licensing in README.
+- [x] Add publish-time check for license and notice files.
+- [x] Document that MIT applies only to project-owned wrapper code.
+- [x] Document bundled PDFium binary licensing in README.
 - [ ] Track exact PDFium revision in release metadata.
 - [ ] Document whether PDFium binaries are built by this project or imported from a trusted upstream build source.
 - [ ] Keep binary build scripts reproducible enough for maintainers to rebuild artifacts.
-- [ ] Add dependency and artifact provenance notes to release documentation.
+- [x] Add dependency and artifact provenance notes to release documentation.
 
 ## Milestone 8: Release Automation
 
@@ -155,16 +155,16 @@ Goal: make releases reviewable, repeatable, and tokenless.
 
 Exit criteria: Release Please can prepare releases and GitHub Actions can publish to npm through Trusted Publishing.
 
-- [ ] Add Release Please configuration.
-- [ ] Configure release pull requests from Conventional Commits.
-- [ ] Configure changelog updates.
-- [ ] Configure version updates for wrapper and platform packages.
-- [ ] Configure GitHub release creation.
-- [ ] Configure npm Trusted Publishing for the wrapper package.
-- [ ] Configure npm Trusted Publishing for native platform packages.
-- [ ] Add publish workflow dry-run or packed-artifact validation.
-- [ ] Publish with provenance if feasible.
-- [ ] Document release procedure for maintainers.
+- [x] Add Release Please configuration.
+- [x] Configure release pull requests from Conventional Commits.
+- [x] Configure changelog updates.
+- [x] Configure version updates for wrapper and platform packages.
+- [x] Configure GitHub release creation.
+- [x] Configure npm Trusted Publishing for the wrapper package.
+- [x] Configure npm Trusted Publishing for native platform packages.
+- [x] Add publish workflow dry-run or packed-artifact validation.
+- [x] Publish with provenance if feasible.
+- [x] Document release procedure for maintainers.
 
 ## Milestone 9: Public Preview Release
 

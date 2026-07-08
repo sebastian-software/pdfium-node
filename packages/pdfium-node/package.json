@@ -19,6 +19,18 @@
   "engines": {
     "node": ">=22"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-software/pdfium-node.git",
+    "directory": "packages/pdfium-node"
+  },
+  "bugs": {
+    "url": "https://github.com/sebastian-software/pdfium-node/issues"
+  },
+  "homepage": "https://github.com/sebastian-software/pdfium-node#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "optionalDependencies": {
     "@sebastian-software/pdfium-node-darwin-arm64": "0.0.0",
     "@sebastian-software/pdfium-node-linux-x64-gnu": "0.0.0"

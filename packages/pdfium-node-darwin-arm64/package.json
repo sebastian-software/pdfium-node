@@ -13,5 +13,17 @@
   "engines": {
     "node": ">=22"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-software/pdfium-node.git",
+    "directory": "packages/pdfium-node-darwin-arm64"
+  },
+  "bugs": {
+    "url": "https://github.com/sebastian-software/pdfium-node/issues"
+  },
+  "homepage": "https://github.com/sebastian-software/pdfium-node#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT"
 }

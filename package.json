@@ -9,12 +9,14 @@
     "packages/*"
   ],
   "scripts": {
-    "qa": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:docs && npm run check:packages",
+    "qa": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run check:docs && npm run check:packages && npm run check:release && npm run pack:check",
     "lint": "node scripts/lint-text.mjs",
     "format:check": "node scripts/lint-text.mjs",
     "typecheck": "node scripts/check-typescript-config.mjs",
     "test": "node --test",
     "check:docs": "node scripts/check-docs.mjs",
-    "check:packages": "node scripts/check-packages.mjs"
+    "check:packages": "node scripts/check-packages.mjs",
+    "check:release": "node scripts/check-release-config.mjs",
+    "pack:check": "node scripts/check-packed-packages.mjs"
   }
 }
