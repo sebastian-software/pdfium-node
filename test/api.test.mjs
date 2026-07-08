@@ -107,18 +107,33 @@ describe("renderPdfThumbnails", () => {
   });
 
   it("preserves requested order and duplicate pages", async () => {
-    const fixture = await readFile("fixtures/simple-one-page.pdf");
+    const fixture = await readFile("fixtures/multi-page.pdf");
     const thumbnails = await renderPdfThumbnails(fixture, {
-      pages: [1, 1],
+      pages: [2, 1, 2],
       format: "png",
       maxWidth: 100,
     });
 
     assert.deepEqual(
       thumbnails.map((thumbnail) => thumbnail.page),
-      [1, 1]
+      [2, 1, 2]
     );
-    assert.equal(thumbnails.length, 2);
+    assert.equal(thumbnails.length, 3);
+  });
+
+  it("renders an image-heavy PDF page to PNG", async () => {
+    const fixture = await readFile("fixtures/image-heavy.pdf");
+    const [thumbnail] = await renderPdfThumbnails(fixture, {
+      pages: [1],
+      format: "png",
+      maxWidth: 160,
+    });
+
+    assert.equal(thumbnail.page, 1);
+    assert.equal(thumbnail.width, 160);
+    assert.equal(thumbnail.height, 160);
+    assert.equal(thumbnail.mimeType, "image/png");
+    assert.deepEqual(Array.from(thumbnail.data.slice(0, 8)), pngSignature);
   });
 
   it("returns a typed error for malformed PDFs", async () => {
@@ -144,6 +159,33 @@ describe("renderPdfThumbnails", () => {
       (error) =>
         error instanceof PdfiumNodeError &&
         error.code === ErrorCodes.PixelLimitExceeded
+    );
+  });
+
+  it("returns a typed error for encrypted PDFs without password support", async () => {
+    const fixture = await readFile("fixtures/encrypted.pdf");
+
+    await assert.rejects(
+      () => renderPdfThumbnails(fixture, { pages: [1], format: "png" }),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        (error.code === ErrorCodes.PasswordRequired ||
+          error.code === ErrorCodes.EncryptedPdf)
+    );
+  });
+
+  it("returns a typed error for JPEG output until the encoder lands", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+
+    await assert.rejects(
+      () =>
+        renderPdfThumbnails(fixture, {
+          pages: [1],
+          format: "jpeg",
+        }),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.PdfiumError
     );
   });
 

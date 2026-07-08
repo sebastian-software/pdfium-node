@@ -117,12 +117,12 @@ Goal: prove behavior against realistic and legally redistributable PDFs.
 Exit criteria: the CI matrix catches rendering, packaging, and error-regression issues.
 
 - [x] Test simple one-page vector PDF rendering.
-- [ ] Test multi-page PDF rendering.
-- [ ] Test image-heavy PDF rendering.
+- [x] Test multi-page PDF rendering.
+- [x] Test image-heavy PDF rendering.
 - [x] Test malformed PDF handling.
-- [ ] Test encrypted PDF handling.
+- [x] Test encrypted PDF handling.
 - [x] Test oversized page or pixel-limit rejection.
-- [ ] Test JPEG output.
+- [x] Test JPEG output.
 - [x] Test PNG output.
 - [x] Test timeout behavior.
 - [x] Test repeated render calls for process or memory leaks.
