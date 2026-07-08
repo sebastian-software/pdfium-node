@@ -26,15 +26,15 @@ Goal: establish the JavaScript package workspace and validation tools.
 
 Exit criteria: the repository has a repeatable local development loop and CI can run the same checks.
 
-- [ ] Create package workspace structure for the wrapper package and native package targets.
-- [ ] Add TypeScript configuration.
-- [ ] Add linting and formatting.
-- [ ] Add test runner.
-- [ ] Add CI for lint, typecheck, and tests.
-- [ ] Add commit message guidance or validation for Conventional Commits.
-- [ ] Add fixture directory structure and fixture licensing notes.
-- [ ] Add initial clean-room fixture PDFs that can be redistributed.
-- [ ] Add a documentation check for ADR links and required project docs.
+- [x] Create package workspace structure for the wrapper package and native package targets.
+- [x] Add TypeScript configuration.
+- [x] Add linting and formatting.
+- [x] Add test runner.
+- [x] Add CI for lint, typecheck, and tests.
+- [x] Add commit message guidance or validation for Conventional Commits.
+- [x] Add fixture directory structure and fixture licensing notes.
+- [x] Add initial clean-room fixture PDFs that can be redistributed.
+- [x] Add a documentation check for ADR links and required project docs.
 
 ## Milestone 2: Native PDFium Rendering Spike
 

@@ -1,0 +1,17 @@
+{
+  "name": "@sebastian-software/pdfium-node-darwin-arm64",
+  "version": "0.0.0",
+  "description": "macOS arm64 native package for @sebastian-software/pdfium-node.",
+  "type": "module",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}

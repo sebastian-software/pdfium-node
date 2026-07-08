@@ -1,0 +1,17 @@
+{
+  "name": "@sebastian-software/pdfium-node-linux-x64-gnu",
+  "version": "0.0.0",
+  "description": "Linux x64 glibc native package for @sebastian-software/pdfium-node.",
+  "type": "module",
+  "main": "./index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
