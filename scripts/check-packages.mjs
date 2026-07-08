@@ -43,3 +43,11 @@ for (const directory of plannedPackages.slice(1)) {
 if (!(await fileExists("packages/pdfium-node/src/index.d.ts"))) {
   fail("Wrapper package must publish TypeScript declarations");
 }
+
+if (!(await fileExists("third_party/pdfium/LICENSE"))) {
+  fail("Missing PDFium license reference: third_party/pdfium/LICENSE");
+}
+
+if (!(await fileExists("third_party/pdfium/README.md"))) {
+  fail("Missing PDFium provenance notes: third_party/pdfium/README.md");
+}

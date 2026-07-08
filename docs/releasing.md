@@ -46,3 +46,5 @@ Do not add long-lived npm tokens to repository secrets.
 ## Binary Notices
 
 Every native package must include `THIRD_PARTY_NOTICES.md`. Once PDFium binaries are bundled, the notice files must include the required PDFium and third-party notices before publishing.
+
+The upstream PDFium license is tracked at `third_party/pdfium/LICENSE`. Binary releases must also record the exact PDFium revision and build source.

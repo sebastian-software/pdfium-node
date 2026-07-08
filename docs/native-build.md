@@ -11,6 +11,7 @@ It proves that platform packages can load a native `.node` addon and call throug
 - Linux x64 package target: package placeholder, native build still pending.
 - PDFium linked: no.
 - Rendering: not implemented.
+- PDFium license reference: `third_party/pdfium/LICENSE`.
 
 ## Build
 
@@ -36,4 +37,4 @@ The QA gate builds the native skeleton, loads it through the platform package, r
 
 ## Next Step
 
-The next native milestone is linking a known PDFium build and replacing the skeleton error with real page rendering.
+The next native milestone is linking a known PDFium build, recording its exact upstream revision, adding complete third-party notices, and replacing the skeleton error with real page rendering.

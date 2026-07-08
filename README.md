@@ -70,3 +70,5 @@ The minimum supported Node.js version is 22. The project targets active Node.js 
 Project-owned wrapper code is licensed under MIT.
 
 PDFium and third-party components bundled with PDFium remain governed by their own licenses and notices. Binary packages must include the required PDFium license text and notices.
+
+The upstream PDFium license reference is tracked in [third_party/pdfium/LICENSE](./third_party/pdfium/LICENSE).

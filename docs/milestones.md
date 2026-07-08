@@ -139,7 +139,7 @@ Goal: make redistribution and binary provenance explicit.
 
 Exit criteria: every package that ships binaries includes the required notices and release metadata.
 
-- [ ] Include PDFium license text.
+- [x] Include PDFium license text.
 - [ ] Include required third-party notices for the bundled PDFium build.
 - [x] Add publish-time check for license and notice files.
 - [x] Document that MIT applies only to project-owned wrapper code.
