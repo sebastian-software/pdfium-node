@@ -7,6 +7,7 @@ const workerPath = fileURLToPath(new URL("./worker-child.js", import.meta.url));
 export function renderInWorker(pdf, options) {
   return new Promise((resolve, reject) => {
     const child = fork(workerPath, {
+      execArgv: getWorkerExecArgv(),
       serialization: "advanced",
       stdio: ["ignore", "ignore", "ignore", "ipc"],
     });
@@ -78,6 +79,38 @@ export function renderInWorker(pdf, options) {
       callback(value);
     }
   });
+}
+
+function getWorkerExecArgv() {
+  const execArgv = [];
+  const optionsWithValue = new Set([
+    "--eval",
+    "-e",
+    "--input-type",
+    "--print",
+    "-p",
+  ]);
+
+  for (let index = 0; index < process.execArgv.length; index += 1) {
+    const arg = process.execArgv[index];
+
+    if (optionsWithValue.has(arg)) {
+      index += 1;
+      continue;
+    }
+
+    if (
+      arg.startsWith("--eval=") ||
+      arg.startsWith("--input-type=") ||
+      arg.startsWith("--print=")
+    ) {
+      continue;
+    }
+
+    execArgv.push(arg);
+  }
+
+  return execArgv;
 }
 
 function rehydrateError(error) {

@@ -105,8 +105,8 @@ Exit criteria: the wrapper package loads the correct native package and gives us
 - [x] Detect unsupported platform and architecture combinations.
 - [x] Return `PDFIUM_NODE_UNSUPPORTED_PLATFORM` for unsupported targets.
 - [x] Return `PDFIUM_NODE_MISSING_NATIVE_PACKAGE` when the expected native package is not installed.
-- [ ] Verify install from packed tarballs in a clean fixture project.
-- [ ] Verify runtime loading from packed tarballs.
+- [x] Verify install from packed tarballs in a clean fixture project.
+- [x] Verify runtime loading from packed tarballs.
 - [x] Keep source compilation disabled unless intentionally supported and tested.
 - [x] Document musl Linux as unsupported unless a dedicated target is added.
 
@@ -131,7 +131,7 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [x] Add Linux x64 glibc CI coverage.
 - [ ] Add macOS arm64 CI coverage.
 - [x] Add supported Node.js active LTS versions to CI.
-- [ ] Add packed-tarball smoke tests to CI.
+- [x] Add packed-tarball smoke tests to CI.
 
 ## Milestone 7: Licensing, Notices, and Supply Chain
 
