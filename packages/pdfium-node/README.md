@@ -4,6 +4,10 @@ Native PDFium access for Node.js.
 
 The package currently provides option validation, typed errors, worker-process isolation, platform package resolution, and PNG/JPEG rendering through native PDFium on supported platform builds.
 
+## Stable Support Contract
+
+The stable package support contract covers the `renderPdfThumbnails` API, documented typed error codes, Linux x64 glibc, macOS arm64, and active Node.js LTS releases.
+
 ## Current Usage
 
 ```ts
