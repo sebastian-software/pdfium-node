@@ -64,6 +64,15 @@ describe("renderPdfThumbnails", () => {
         error.message.includes("not implemented")
     );
   });
+
+  it("enforces render timeouts in the worker path", async () => {
+    await assert.rejects(
+      () => renderPdfThumbnails(pdfBytes, { pages: [1], timeoutMs: 1 }),
+      (error) =>
+        error instanceof PdfiumNodeError &&
+        error.code === ErrorCodes.RenderTimeout
+    );
+  });
 });
 
 describe("platform package resolution", () => {

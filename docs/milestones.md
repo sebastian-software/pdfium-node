@@ -81,16 +81,16 @@ Goal: make native rendering survivable for untrusted PDFs.
 
 Exit criteria: malformed, slow, or crashing render work does not crash or block the caller process.
 
-- [ ] Define worker process protocol.
-- [ ] Run render jobs outside the caller process.
-- [ ] Enforce `timeoutMs` by terminating the worker process.
-- [ ] Return `PDFIUM_NODE_RENDER_TIMEOUT` for timeouts.
+- [x] Define worker process protocol.
+- [x] Run render jobs outside the caller process.
+- [x] Enforce `timeoutMs` by terminating the worker process.
+- [x] Return `PDFIUM_NODE_RENDER_TIMEOUT` for timeouts.
 - [ ] Return `PDFIUM_NODE_WORKER_CRASHED` for worker exits.
 - [ ] Ensure no orphan worker processes remain after timeout or crash.
-- [ ] Ensure worker stdout and stderr do not leak into API responses.
+- [x] Ensure worker stdout and stderr do not leak into API responses.
 - [ ] Verify invalid PDFs do not crash the caller process.
-- [ ] Decide whether worker processes are one-job-per-process or pooled.
-- [ ] Record worker lifecycle decision as an ADR if it changes the accepted isolation model.
+- [x] Decide whether worker processes are one-job-per-process or pooled.
+- [x] Record worker lifecycle decision as an ADR if it changes the accepted isolation model.
 
 ## Milestone 5: Platform Packages and Install Experience
 
@@ -124,7 +124,7 @@ Exit criteria: the CI matrix catches rendering, packaging, and error-regression 
 - [ ] Test oversized page or pixel-limit rejection.
 - [ ] Test JPEG output.
 - [ ] Test PNG output.
-- [ ] Test timeout behavior.
+- [x] Test timeout behavior.
 - [ ] Test repeated render calls for process or memory leaks.
 - [ ] Test platform package resolution.
 - [x] Test typed error codes and safe metadata.
