@@ -26,7 +26,10 @@ for (const path of packagePaths) {
     fail(`Release Please config missing package: ${path}`);
   }
 
-  if (manifest[path] !== "0.0.0") {
-    fail(`Release Please manifest must start ${path} at 0.0.0`);
+  const packageJson = await readJson(`${path}/package.json`);
+  if (manifest[path] !== packageJson.version) {
+    fail(
+      `Release Please manifest version for ${path} must match package.json version ${packageJson.version}`
+    );
   }
 }
