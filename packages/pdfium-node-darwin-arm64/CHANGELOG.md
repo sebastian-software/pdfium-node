@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-darwin-arm64-v1.2.0...pdfium-node-darwin-arm64-v1.2.1) (2026-07-09)
+
+
+### Miscellaneous Chores
+
+* **pdfium-node-darwin-arm64:** Synchronize pdfium-node packages versions
+
 ## [1.2.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-darwin-arm64-v1.1.0...pdfium-node-darwin-arm64-v1.2.0) (2026-07-09)
 
 

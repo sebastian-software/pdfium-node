@@ -1,6 +1,6 @@
 {
   "name": "pdfium-node",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Native PDFium access for Node.js.",
   "type": "module",
   "main": "./src/index.js",
@@ -32,8 +32,8 @@
     "access": "public"
   },
   "optionalDependencies": {
-    "pdfium-node-darwin-arm64": "1.2.0",
-    "pdfium-node-linux-x64-gnu": "1.2.0"
+    "pdfium-node-darwin-arm64": "1.2.1",
+    "pdfium-node-linux-x64-gnu": "1.2.1"
   },
   "license": "MIT"
 }
