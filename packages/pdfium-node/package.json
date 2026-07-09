@@ -32,8 +32,8 @@
     "access": "public"
   },
   "optionalDependencies": {
-    "pdfium-node-darwin-arm64": "1.0.0",
-    "pdfium-node-linux-x64-gnu": "1.0.0"
+    "pdfium-node-darwin-arm64": "1.1.0",
+    "pdfium-node-linux-x64-gnu": "1.1.0"
   },
   "license": "MIT"
 }
