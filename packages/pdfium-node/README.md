@@ -6,13 +6,13 @@ The package currently provides option validation, typed errors, worker-process i
 
 ## Stable Support Contract
 
-The stable package support contract covers the `renderPdfThumbnails` API, documented typed error codes, Linux x64 glibc, macOS arm64, and active Node.js LTS releases.
+The stable package support contract covers the `renderPdfThumbnails` and `getPdfiumNodeBuildInfo` APIs, documented typed error codes, Linux x64 glibc, macOS arm64, and active Node.js LTS releases.
 
 ## Current Usage
 
 ```ts
 import { readFile } from "node:fs/promises";
-import { renderPdfThumbnails } from "pdfium-node";
+import { getPdfiumNodeBuildInfo, renderPdfThumbnails } from "pdfium-node";
 
 const pdf = await readFile("document.pdf");
 const thumbnails = await renderPdfThumbnails(pdf, {
@@ -20,6 +20,9 @@ const thumbnails = await renderPdfThumbnails(pdf, {
   format: "png",
   maxWidth: 1000,
 });
+
+const buildInfo = await getPdfiumNodeBuildInfo();
+console.log(buildInfo.platformPackageName, buildInfo.pdfiumVersion);
 ```
 
 ## Known Limitations

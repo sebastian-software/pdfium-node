@@ -59,10 +59,41 @@ try {
       "--input-type=module",
       "--eval",
       `
-        import { ErrorCodes, PdfiumNodeError, renderPdfThumbnails } from "pdfium-node";
+        import {
+          ErrorCodes,
+          PdfiumNodeError,
+          getPdfiumNodeBuildInfo,
+          renderPdfThumbnails,
+        } from "pdfium-node";
         import { pathToFileURL } from "node:url";
 
         const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
+        const expectedPlatformPackage =
+          process.platform === "darwin" && process.arch === "arm64"
+            ? "pdfium-node-darwin-arm64"
+            : process.platform === "linux" && process.arch === "x64"
+              ? "pdfium-node-linux-x64-gnu"
+              : null;
+
+        if (!expectedPlatformPackage) throw new Error("Unsupported smoke platform");
+
+        const buildInfo = await getPdfiumNodeBuildInfo();
+        if (buildInfo.packageName !== "pdfium-node") throw new Error("Unexpected package name");
+        if (typeof buildInfo.packageVersion !== "string") throw new Error("Missing package version");
+        if (buildInfo.platformPackageName !== expectedPlatformPackage) {
+          throw new Error("Unexpected platform package");
+        }
+        if (buildInfo.platformPackageVersion !== buildInfo.packageVersion) {
+          throw new Error("Unexpected platform package version");
+        }
+        if (buildInfo.platform !== process.platform) throw new Error("Unexpected platform");
+        if (buildInfo.arch !== process.arch) throw new Error("Unexpected arch");
+        if (buildInfo.pdfiumVersion !== "chromium/7934") {
+          throw new Error("Unexpected PDFium version");
+        }
+        if (buildInfo.pdfiumRevision !== "chromium/7934") {
+          throw new Error("Unexpected PDFium revision");
+        }
 
         try {
           await renderPdfThumbnails(pdf, { pages: [1] });

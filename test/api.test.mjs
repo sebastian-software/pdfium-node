@@ -5,6 +5,7 @@ import * as pdfiumNode from "pdfium-node";
 import {
   ErrorCodes,
   PdfiumNodeError,
+  getPdfiumNodeBuildInfo,
   renderPdfThumbnails,
 } from "pdfium-node";
 import { getPlatformPackageName } from "../packages/pdfium-node/src/platform.js";
@@ -16,10 +17,11 @@ const jpegStart = [255, 216];
 const jpegEnd = [255, 217];
 
 describe("public API surface", () => {
-  it("exports the stable MVP symbols", () => {
+  it("exports the stable public symbols", () => {
     assert.deepEqual(Object.keys(pdfiumNode).sort(), [
       "ErrorCodes",
       "PdfiumNodeError",
+      "getPdfiumNodeBuildInfo",
       "renderPdfThumbnails",
     ]);
   });
@@ -38,6 +40,35 @@ describe("public API surface", () => {
       PixelLimitExceeded: "PDFIUM_NODE_PIXEL_LIMIT_EXCEEDED",
       PdfiumError: "PDFIUM_NODE_PDFIUM_ERROR",
       WorkerCrashed: "PDFIUM_NODE_WORKER_CRASHED",
+    });
+  });
+});
+
+describe("getPdfiumNodeBuildInfo", () => {
+  it("exposes wrapper and native build diagnostics", async () => {
+    const info = await getPdfiumNodeBuildInfo();
+    const expected = getExpectedNativePackage();
+
+    assert.ok(expected);
+
+    const wrapperPackage = await readPackageJson("packages/pdfium-node/package.json");
+    const nativePackage = await readPackageJson(`${expected.packagePath}/package.json`);
+
+    assert.equal(info.packageName, "pdfium-node");
+    assert.equal(info.packageVersion, wrapperPackage.version);
+    assert.equal(info.platformPackageName, expected.packageName);
+    assert.equal(info.platformPackageVersion, nativePackage.version);
+    assert.equal(info.platform, expected.platform);
+    assert.equal(info.arch, expected.arch);
+    assert.equal(info.pdfiumVersion, "chromium/7934");
+    assert.equal(info.pdfiumRevision, "chromium/7934");
+    assert.deepEqual(info.native, {
+      backend: "node-api",
+      platform: expected.platform,
+      arch: expected.arch,
+      pdfiumLinked: true,
+      pdfiumSource: "bblanchon/pdfium-binaries",
+      pdfiumRevision: "chromium/7934",
     });
   });
 });
@@ -345,3 +376,29 @@ describe("platform package resolution", () => {
     assert.equal(getPlatformPackageName("win32", "x64"), null);
   });
 });
+
+function getExpectedNativePackage() {
+  if (process.platform === "darwin" && process.arch === "arm64") {
+    return {
+      packageName: "pdfium-node-darwin-arm64",
+      packagePath: "packages/pdfium-node-darwin-arm64",
+      platform: "darwin",
+      arch: "arm64",
+    };
+  }
+
+  if (process.platform === "linux" && process.arch === "x64") {
+    return {
+      packageName: "pdfium-node-linux-x64-gnu",
+      packagePath: "packages/pdfium-node-linux-x64-gnu",
+      platform: "linux",
+      arch: "x64",
+    };
+  }
+
+  return null;
+}
+
+async function readPackageJson(path) {
+  return JSON.parse(await readFile(path, "utf8"));
+}

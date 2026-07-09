@@ -22,6 +22,18 @@ export interface RenderedPdfThumbnail {
   data: Uint8Array;
 }
 
+export interface PdfiumNodeBuildInfo {
+  packageName: string;
+  packageVersion: string;
+  platformPackageName: string;
+  platformPackageVersion?: string;
+  platform: string;
+  arch: string;
+  pdfiumVersion?: string;
+  pdfiumRevision?: string;
+  native: Record<string, unknown>;
+}
+
 export declare const ErrorCodes: Readonly<{
   UnsupportedPlatform: "PDFIUM_NODE_UNSUPPORTED_PLATFORM";
   MissingNativePackage: "PDFIUM_NODE_MISSING_NATIVE_PACKAGE";
@@ -46,3 +58,5 @@ export declare function renderPdfThumbnails(
   pdf: Uint8Array | Buffer,
   options: RenderPdfThumbnailsOptions
 ): Promise<RenderedPdfThumbnail[]>;
+
+export declare function getPdfiumNodeBuildInfo(): Promise<PdfiumNodeBuildInfo>;
