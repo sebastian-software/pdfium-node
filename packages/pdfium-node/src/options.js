@@ -36,7 +36,7 @@ export function normalizeRenderOptions(pdf, options) {
   if (options.password !== undefined) {
     throw new PdfiumNodeError(
       ErrorCodes.PasswordRequired,
-      "Password-protected PDFs are not supported in the MVP."
+      "Password-protected PDFs are not supported by the stable API."
     );
   }
 

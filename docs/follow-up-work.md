@@ -6,13 +6,15 @@ This document keeps issue-ready follow-up work in the repository until the publi
 
 GitHub issue: [#1](https://github.com/sebastian-software/pdfium-node/issues/1)
 
-Decide whether password-protected PDFs belong in the stable API.
+Status: resolved by [ADR 0014](./adr/0014-reject-password-protected-pdfs.md).
+
+Password-protected PDFs do not belong in the stable API. The package keeps typed rejection behavior for encrypted PDFs and avoids accepting password values.
 
 Acceptance criteria:
 
-- The decision is recorded as an ADR if support is added or explicitly rejected for 1.0.
+- The decision is recorded as an ADR.
 - Passwords are never logged or included in error metadata.
-- Tests cover missing, wrong, and correct password behavior if support is added.
+- Existing typed rejection behavior remains covered by API tests.
 
 ## Linux Server and Edge Platform Packages
 

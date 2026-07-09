@@ -79,7 +79,7 @@ describe("renderPdfThumbnails", () => {
     );
   });
 
-  it("rejects password input in the MVP", async () => {
+  it("rejects password input in the stable API", async () => {
     await assert.rejects(
       () => renderPdfThumbnails(pdfBytes, { pages: [1], password: "secret" }),
       (error) =>
