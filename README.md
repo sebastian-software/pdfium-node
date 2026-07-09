@@ -30,7 +30,7 @@ Stable platform support:
 ## API
 
 ```ts
-import { renderPdfThumbnails } from "pdfium-node";
+import { getPdfiumNodeBuildInfo, renderPdfThumbnails } from "pdfium-node";
 
 const thumbnails = await renderPdfThumbnails(pdfBytes, {
   pages: [1],
@@ -40,6 +40,9 @@ const thumbnails = await renderPdfThumbnails(pdfBytes, {
   timeoutMs: 5000,
   maxPixels: 4_000_000,
 });
+
+const buildInfo = await getPdfiumNodeBuildInfo();
+console.log(buildInfo.platformPackageName, buildInfo.pdfiumVersion);
 ```
 
 The macOS arm64 and Linux x64 glibc packages support PNG and JPEG output.
