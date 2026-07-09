@@ -4,12 +4,12 @@ Releases are managed with Release Please and npm Trusted Publishing.
 
 ## Release Flow
 
-1. Merge feature, fix, docs, build, and CI changes to `main` using Conventional Commits.
+1. Merge releasable Conventional Commits such as `feat:` or `fix:` to `main`.
 2. Release Please opens or updates a release pull request.
 3. Review the release pull request for version bumps, changelog entries, and package coverage.
 4. Merge the release pull request.
 5. Release Please creates the GitHub release.
-6. The publish workflow publishes npm packages from GitHub Actions using Trusted Publishing.
+6. The Release Please workflow publishes all npm packages from GitHub Actions using Trusted Publishing.
 
 ## Preview Release
 
@@ -76,12 +76,12 @@ Do not add long-lived npm tokens to repository secrets.
 Trusted publisher setup can be managed with the npm CLI once the packages exist on the registry. The npm CLI requires an npm owner account with two-factor authentication for this operation:
 
 ```sh
-npm trust github pdfium-node --repo sebastian-software/pdfium-node --file publish.yml --yes
-npm trust github pdfium-node-darwin-arm64 --repo sebastian-software/pdfium-node --file publish.yml --yes
-npm trust github pdfium-node-linux-x64-gnu --repo sebastian-software/pdfium-node --file publish.yml --yes
+npm trust github pdfium-node --repo sebastian-software/pdfium-node --file release-please.yml --yes
+npm trust github pdfium-node-darwin-arm64 --repo sebastian-software/pdfium-node --file release-please.yml --yes
+npm trust github pdfium-node-linux-x64-gnu --repo sebastian-software/pdfium-node --file release-please.yml --yes
 ```
 
-For brand-new package names, npm currently requires the package record to exist before trust can be configured. The package records for `pdfium-node`, `pdfium-node-darwin-arm64`, and `pdfium-node-linux-x64-gnu` already exist. Use the GitHub Actions publish workflow for subsequent releases.
+For brand-new package names, npm currently requires the package record to exist before trust can be configured. The package records for `pdfium-node`, `pdfium-node-darwin-arm64`, and `pdfium-node-linux-x64-gnu` already exist. Use the Release Please workflow for subsequent releases.
 
 The native packages must be created from builds that include their platform prebuilds. Do not bootstrap a platform package from the wrong operating system just to create the npm package name.
 
