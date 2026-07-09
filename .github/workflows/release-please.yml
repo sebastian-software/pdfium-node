@@ -23,8 +23,25 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  dispatch-publish:
+  cleanup-subpackage-releases:
     needs: release-please
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release commit
+        uses: actions/checkout@v4
+      - name: Delete subpackage GitHub releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="$(node -p "require('./packages/pdfium-node/package.json').version")"
+          gh release delete "pdfium-node-darwin-arm64-v${version}" --repo sebastian-software/pdfium-node --yes
+          gh release delete "pdfium-node-linux-x64-gnu-v${version}" --repo sebastian-software/pdfium-node --yes
+
+  dispatch-publish:
+    needs:
+      - release-please
+      - cleanup-subpackage-releases
     if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
     steps:

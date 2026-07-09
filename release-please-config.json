@@ -24,13 +24,11 @@
     },
     "packages/pdfium-node-darwin-arm64": {
       "component": "pdfium-node-darwin-arm64",
-      "release-type": "node",
-      "skip-github-release": true
+      "release-type": "node"
     },
     "packages/pdfium-node-linux-x64-gnu": {
       "component": "pdfium-node-linux-x64-gnu",
-      "release-type": "node",
-      "skip-github-release": true
+      "release-type": "node"
     }
   }
 }

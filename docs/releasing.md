@@ -18,6 +18,8 @@ The first public preview release was published as `0.1.0`. The temporary `releas
 
 Release Please uses the `node-workspace` plugin so local workspace dependency versions stay aligned across the wrapper and native platform packages.
 
+All npm packages are versioned together. Release Please creates component tags for the wrapper and native packages, but the workflow removes native package GitHub release entries so each product version has one visible GitHub release.
+
 ## Stable Release
 
 The first stable release was published as `1.0.0`. The temporary `release-as` override has been removed from `release-please-config.json` so future release pull requests are derived from Conventional Commits.
