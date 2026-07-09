@@ -1,5 +1,5 @@
 {
-  "packages/pdfium-node": "1.1.0",
-  "packages/pdfium-node-darwin-arm64": "1.1.0",
-  "packages/pdfium-node-linux-x64-gnu": "1.1.0"
+  "packages/pdfium-node": "1.2.0",
+  "packages/pdfium-node-darwin-arm64": "1.2.0",
+  "packages/pdfium-node-linux-x64-gnu": "1.2.0"
 }
