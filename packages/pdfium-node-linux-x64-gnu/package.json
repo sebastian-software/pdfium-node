@@ -1,6 +1,6 @@
 {
   "name": "pdfium-node-linux-x64-gnu",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Linux x64 glibc native package for pdfium-node.",
   "type": "module",
   "main": "./index.js",

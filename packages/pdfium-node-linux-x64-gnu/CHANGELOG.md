@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-linux-x64-gnu-v1.2.0...pdfium-node-linux-x64-gnu-v1.2.1) (2026-07-09)
+
+
+### Miscellaneous Chores
+
+* **pdfium-node-linux-x64-gnu:** Synchronize pdfium-node packages versions
+
 ## [1.2.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-linux-x64-gnu-v1.1.0...pdfium-node-linux-x64-gnu-v1.2.0) (2026-07-09)
 
 

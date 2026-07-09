@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.1](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-v1.2.0...pdfium-node-v1.2.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* document package installation ([883d58e](https://github.com/sebastian-software/pdfium-node/commit/883d58e412a84fd9672e9efcef142c2a61c107f8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * optionalDependencies
+    * pdfium-node-darwin-arm64 bumped from 1.2.0 to 1.2.1
+    * pdfium-node-linux-x64-gnu bumped from 1.2.0 to 1.2.1
+
 ## [1.2.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-v1.1.0...pdfium-node-v1.2.0) (2026-07-09)
 
 
