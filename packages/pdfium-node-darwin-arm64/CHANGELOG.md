@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-darwin-arm64-v1.0.0...pdfium-node-darwin-arm64-v1.1.0) (2026-07-09)
+
+
+### Features
+
+* expose wrapper build diagnostics ([f92207d](https://github.com/sebastian-software/pdfium-node/commit/f92207df85c50723a7ff07ad40ad06fbce46b1d2))
+
+
+### Bug Fixes
+
+* honor scale without maxWidth ([16e330b](https://github.com/sebastian-software/pdfium-node/commit/16e330bad550485cb15bf0a6933a6cef62777b9d))
+
 ## [1.0.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-darwin-arm64-v0.1.0...pdfium-node-darwin-arm64-v1.0.0) (2026-07-08)
 
 
