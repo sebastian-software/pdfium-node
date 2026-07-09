@@ -13,8 +13,10 @@ export function normalizeRenderOptions(pdf, options) {
 
   const pages = validatePages(options.pages);
   const format = validateFormat(options.format ?? "jpeg");
-  const maxWidth = validateOptionalPositiveInteger(options.maxWidth, "maxWidth") ?? 1000;
   const scale = validateOptionalPositiveNumber(options.scale, "scale");
+  const maxWidth =
+    validateOptionalPositiveInteger(options.maxWidth, "maxWidth") ??
+    (scale === undefined ? 1000 : undefined);
   const quality = validateOptionalIntegerRange(options.quality, "quality", 1, 100) ?? 72;
   const timeoutMs = validateOptionalPositiveInteger(options.timeoutMs, "timeoutMs") ?? 5000;
   const maxPixels = validateOptionalPositiveInteger(options.maxPixels, "maxPixels") ?? 4_000_000;

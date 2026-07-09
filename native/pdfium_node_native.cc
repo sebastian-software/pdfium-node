@@ -73,6 +73,17 @@ uint32_t GetUint32Option(napi_env env, napi_value options, const char* name, uin
   return result;
 }
 
+double GetDoubleOption(napi_env env, napi_value options, const char* name, double fallback) {
+  napi_value value;
+  if (!GetNamedValue(env, options, name, &value)) {
+    return fallback;
+  }
+
+  double result = fallback;
+  napi_get_value_double(env, value, &result);
+  return result;
+}
+
 std::vector<int> GetPages(napi_env env, napi_value options) {
   napi_value pages_value;
   if (!GetNamedValue(env, options, "pages", &pages_value)) {
@@ -155,6 +166,7 @@ napi_value RenderPdfPagesRaw(napi_env env, napi_callback_info info) {
 
   const int page_count = FPDF_GetPageCount(document);
   std::vector<int> pages = GetPages(env, args[1]);
+  const double requested_scale = GetDoubleOption(env, args[1], "scale", 0);
   const uint32_t max_width = GetUint32Option(env, args[1], "maxWidth", 1000);
   const uint32_t max_pixels = GetUint32Option(env, args[1], "maxPixels", 4000000);
 
@@ -178,7 +190,9 @@ napi_value RenderPdfPagesRaw(napi_env env, napi_callback_info info) {
 
     const double page_width_points = FPDF_GetPageWidth(page);
     const double page_height_points = FPDF_GetPageHeight(page);
-    const double scale = static_cast<double>(max_width) / page_width_points;
+    const double scale = requested_scale > 0
+      ? requested_scale
+      : static_cast<double>(max_width) / page_width_points;
     const int width = std::max(1, static_cast<int>(std::round(page_width_points * scale)));
     const int height = std::max(1, static_cast<int>(std::round(page_height_points * scale)));
 
