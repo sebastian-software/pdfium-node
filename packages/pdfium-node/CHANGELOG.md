@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.0](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-v1.2.1...pdfium-node-v1.3.0) (2026-07-09)
+
+
+### Miscellaneous Chores
+
+* **pdfium-node:** Synchronize pdfium-node packages versions
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * optionalDependencies
+    * pdfium-node-darwin-arm64 bumped from 1.2.1 to 1.3.0
+    * pdfium-node-linux-x64-gnu bumped from 1.2.1 to 1.3.0
+
 ## [1.2.1](https://github.com/sebastian-software/pdfium-node/compare/pdfium-node-v1.2.0...pdfium-node-v1.2.1) (2026-07-09)
 
 
