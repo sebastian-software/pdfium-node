@@ -159,6 +159,21 @@ describe("renderPdfThumbnails", () => {
     assert.ok(thumbnail.data.byteLength > 100);
   });
 
+  it("uses scale when maxWidth is omitted", async () => {
+    const fixture = await readFile("fixtures/simple-one-page.pdf");
+    const [thumbnail] = await renderPdfThumbnails(fixture, {
+      pages: [1],
+      format: "png",
+      scale: 0.5,
+    });
+
+    assert.equal(thumbnail.page, 1);
+    assert.equal(thumbnail.width, 100);
+    assert.equal(thumbnail.height, 100);
+    assert.equal(thumbnail.mimeType, "image/png");
+    assert.deepEqual(Array.from(thumbnail.data.slice(0, 8)), pngSignature);
+  });
+
   it("preserves requested order and duplicate pages", async () => {
     const fixture = await readFile("fixtures/multi-page.pdf");
     const thumbnails = await renderPdfThumbnails(fixture, {
