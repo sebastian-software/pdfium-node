@@ -10,6 +10,12 @@ The stable package support contract covers the `renderPdfThumbnails` and `getPdf
 
 ## Current Usage
 
+Install the package from npm:
+
+```sh
+npm install pdfium-node
+```
+
 ```ts
 import { readFile } from "node:fs/promises";
 import { getPdfiumNodeBuildInfo, renderPdfThumbnails } from "pdfium-node";
