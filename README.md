@@ -66,7 +66,7 @@ console.log(thumbnail.page, thumbnail.width, thumbnail.height, thumbnail.mimeTyp
 
 - The `quality` option applies to JPEG output and has no effect on PNG output.
 - Only a white background is currently supported. Transparent PNG output is intentionally deferred.
-- Password-protected and encrypted PDFs are rejected in the MVP.
+- Password-protected and encrypted PDFs are rejected by the stable API.
 - The package does not expose document metadata, page count, text extraction, raw PDFium handles, or a general PDFium API.
 - Rendering uses one worker process per render request. Worker pools and OS-level sandboxing are deferred.
 - Stable platform packages target Linux x64 glibc and macOS arm64. Linux arm64 and Linux musl are planned server and edge follow-up targets. macOS x64 and Windows are not planned without concrete demand.

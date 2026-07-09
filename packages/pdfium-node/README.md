@@ -24,6 +24,6 @@ const thumbnails = await renderPdfThumbnails(pdf, {
 
 ## Known Limitations
 
-- Password-protected and encrypted PDFs are rejected in the MVP.
+- Password-protected and encrypted PDFs are rejected by the stable API.
 - Only Linux x64 glibc and macOS arm64 are initial native package targets.
 - Raw PDFium handles, document metadata, text extraction, and full PDFium API coverage are out of scope.

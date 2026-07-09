@@ -17,3 +17,4 @@ Accepted ADRs are immutable. If a decision changes, create a new ADR that supers
 - [0011. Use direct Node-API for the native skeleton](./0011-use-direct-node-api-for-the-native-skeleton.md)
 - [0012. Use unscoped npm package names](./0012-use-unscoped-npm-package-names.md)
 - [0013. Prioritize Linux server and edge platforms](./0013-prioritize-linux-server-and-edge-platforms.md)
+- [0014. Reject password-protected PDF support](./0014-reject-password-protected-pdfs.md)
