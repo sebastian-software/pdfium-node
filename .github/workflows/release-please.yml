@@ -31,4 +31,4 @@ jobs:
       - name: Dispatch publish workflow
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run publish.yml --ref main -f ref=${{ github.sha }}
+        run: gh workflow run publish.yml --repo sebastian-software/pdfium-node --ref main -f ref=${{ github.sha }}
